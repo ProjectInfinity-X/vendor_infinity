@@ -106,6 +106,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.sys.sf.disable_blurs=1
 endif
 
+# Charger
+PRODUCT_PACKAGES += \
+    product_charger_res_images
+
 # Config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig \
