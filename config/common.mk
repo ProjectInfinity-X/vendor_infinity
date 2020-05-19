@@ -234,6 +234,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
+    NavigationBarNoHintOverlay \
     NetworkStackOverlay
 
 # Translations
