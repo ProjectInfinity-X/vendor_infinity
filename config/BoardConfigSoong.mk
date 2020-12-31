@@ -56,6 +56,7 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_trust_usb_control_disable \
     uses_egl_display_array \
     uses_legacy_fd_fbdev \
+    uses_miui_camera \
     uses_oplus_camera \
     needs_camera_boottime \
     target_camera_package_name \
@@ -100,6 +101,7 @@ SOONG_CONFIG_infinityGlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CA
 SOONG_CONFIG_infinityGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_uses_oppo_camera := $(TARGET_USES_OPPO_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
+SOONG_CONFIG_infinityGlobalVars_uses_miui_camera := $(TARGET_USES_MIUI_CAMERA)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
