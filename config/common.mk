@@ -235,8 +235,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    dalvik.vm.systemuicompilerfilter=speed
+# Speed profile services and wifi-service to reduce RAM and storage
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/infinity/overlay/common \
