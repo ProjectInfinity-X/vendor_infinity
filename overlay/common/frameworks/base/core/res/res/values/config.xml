@@ -697,6 +697,6 @@
     <!-- Colon separated list of package names that should be granted Notification Listener access -->
     <string name="config_defaultListenerAccessPackages" translatable="false">com.google.android.apps.nexuslauncher:com.google.android.setupwizard:com.google.android.apps.pixelmigrate:com.google.android.as:com.google.android.projection.gearhead:co.aospa.glyph:io.chaldeaprjkt.gamespace</string>
 
-    <!-- Suppress Intent Filter Verification Service crashes -->
-    <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice</string>
+    <!-- Suppress Intent Filter Verification Service crashes and System UI ANRs (both AOSP bugs) -->
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice,com.android.systemui</string>
 </resources>
