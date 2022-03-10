@@ -125,6 +125,9 @@
     <string name="config_systemUiIntelligence">com.google.android.as</string>
     <string name="config_systemVisualIntelligence">com.google.android.as</string>
 
+    <!-- Suppress Intent Filter Verification Service crashes and System UI ANRs (both AOSP bugs) -->
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice,com.android.systemui,com.google.android.as,com.google.android.tts</string>
+
     <!-- List of packages that can use the Conversation space for their category messages
     notifications until they target R -->
     <string-array name="config_notificationMsgPkgsAllowedAsConvos" translatable="false">
