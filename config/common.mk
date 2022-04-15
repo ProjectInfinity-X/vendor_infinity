@@ -120,6 +120,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 # Filesystems tools
 PRODUCT_PACKAGES += \
     fsck.ntfs \
+    mke2fs \
     mkfs.ntfs \
     mount.ntfs
 
