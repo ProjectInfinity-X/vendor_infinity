@@ -218,6 +218,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/infinity/build/target/product/security/infinity
 
 include vendor/infinity/config/version.mk
+include vendor/infinity/config/packages.mk
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
