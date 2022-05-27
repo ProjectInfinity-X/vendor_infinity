@@ -69,6 +69,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.sys.sf.disable_blurs=1
 endif
 
+# BootAnimation
+PRODUCT_COPY_FILES += \
+	vendor/infinity/prebuilt/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+
 # Some permissions
 PRODUCT_COPY_FILES += \
     vendor/infinity/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
