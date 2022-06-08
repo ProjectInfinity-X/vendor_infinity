@@ -222,6 +222,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/infinity/overlay/common \
 
 PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay
 
