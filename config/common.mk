@@ -24,6 +24,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+# Audio
+$(call inherit-product, vendor/infinity/audio/audio.mk)
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -191,3 +194,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/infinity/build/target/product/security/infinity
 
 include vendor/infinity/config/version.mk
+
+# Sounds (default)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=vibe.ogg
