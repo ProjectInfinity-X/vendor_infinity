@@ -99,11 +99,9 @@ $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(INFINITY_BU
 endif
 
 # Charger
-ifeq ($(TARGET_USE_PIXEL_CHARGER),true)
 PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
-endif
 
 # Config
 PRODUCT_PACKAGES += \
