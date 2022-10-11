@@ -1,3 +1,4 @@
 # GameSpace
 PRODUCT_PACKAGES += \
-    GameSpace
+    GameSpace \
+    BatteryStatsViewer
