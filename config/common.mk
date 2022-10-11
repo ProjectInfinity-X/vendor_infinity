@@ -147,6 +147,10 @@ USE_DEX2OAT_DEBUG := false
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+# BatteryStatsViewer
+PRODUCT_PACKAGES += \
+     BatteryStatsViewer
+
 # Bootanimation
 include vendor/infinity/config/bootanimation.mk
 
