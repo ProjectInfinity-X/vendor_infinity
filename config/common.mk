@@ -284,6 +284,17 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     Launcher3QuickStep \
     Settings
     
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.dexopt.boot=verify \
+    pm.dexopt.first-boot=quicken \
+    pm.dexopt.install=speed-profile \
+    pm.dexopt.bg-dexopt=everything
+
+ifneq ($(AB_OTA_PARTITIONS),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.dexopt.ab-ota=quicken
+endif
+    
 
 # Speed profile services and wifi-service to reduce RAM and storage
 PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
