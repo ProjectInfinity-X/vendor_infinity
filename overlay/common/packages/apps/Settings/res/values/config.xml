@@ -40,4 +40,8 @@
     <string name="config_bt_slice_intent_action">com.google.android.gms.nearby.discovery.ACTION_LOG_SLICE_AND_LAUNCH_INTENT</string>
     <string name="config_bt_slice_pending_intent_action">com.google.android.gms.nearby.discovery.ACTION_LOG_SLICE_AND_SEND_PENDING_INTENT</string>
 
+    <!-- Action name for the wallpaper picker activity. -->
+    <string name="config_wallpaper_picker_action" translatable="false">android.intent.action.MAIN</string>
+    <!-- Action name for the styles & wallpaper picker activity. -->
+    <string name="config_styles_and_wallpaper_picker_action" translatable="false">android.intent.action.MAIN</string>
 </resources>
