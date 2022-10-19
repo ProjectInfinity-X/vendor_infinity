@@ -281,7 +281,9 @@ endif
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
-    Launcher3QuickStep
+    Launcher3QuickStep \
+    Settings
+    
 
 # Speed profile services and wifi-service to reduce RAM and storage
 PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
