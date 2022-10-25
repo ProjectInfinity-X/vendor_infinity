@@ -36,6 +36,7 @@ SOONG_CONFIG_infinityGlobalVars += \
     gralloc_handle_has_custom_content_md_reserved_size \
     disable_bluetooth_le_read_buffer_size_v2 \
     disable_bluetooth_le_set_host_feature \
+    disable_postrender_cleanup \
     gralloc_handle_has_reserved_size \
     sdmcore_has_is_display_hw_available_func \
     gralloc_handle_has_ubwcp_format \
@@ -104,6 +105,7 @@ SOONG_CONFIG_infinityGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAM
 SOONG_CONFIG_infinityGlobalVars_uses_oppo_camera := $(TARGET_USES_OPPO_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
 SOONG_CONFIG_infinityGlobalVars_uses_miui_camera := $(TARGET_USES_MIUI_CAMERA)
+SOONG_CONFIG_infinityGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
