@@ -33,6 +33,8 @@ SOONG_CONFIG_infinityGlobalVars += \
     bootloader_message_offset \
     camera_override_format_from_reserved \
     gralloc_handle_has_custom_content_md_reserved_size \
+    disable_bluetooth_le_read_buffer_size_v2 \
+    disable_bluetooth_le_set_host_feature \
     gralloc_handle_has_reserved_size \
     target_health_charging_control_charging_path \
     target_health_charging_control_charging_enabled \
@@ -115,6 +117,8 @@ SOONG_CONFIG_infinityGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURF
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
+SOONG_CONFIG_infinityGlobalVars_disable_bluetooth_le_read_buffer_size_v2 := $(TARGET_DISABLE_BLUETOOTH_LE_READ_BUFFER_SIZE_V2)
+SOONG_CONFIG_infinityGlobalVars_disable_bluetooth_le_set_host_feature := $(TARGET_DISABLE_BLUETOOTH_LE_SET_HOST_FEATURE)
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_infinityQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
 else
