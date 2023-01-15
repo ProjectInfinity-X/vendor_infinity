@@ -58,7 +58,8 @@ SOONG_CONFIG_infinityGlobalVars += \
     uses_legacy_fd_fbdev \
     uses_oplus_camera \
     needs_camera_boottime \
-    target_camera_package_name
+    target_camera_package_name \
+    uses_nothing_camera
 
 SOONG_CONFIG_NAMESPACES += infinityNvidiaVars
 SOONG_CONFIG_infinityNvidiaVars += \
@@ -95,6 +96,7 @@ SOONG_CONFIG_infinityGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIM
 SOONG_CONFIG_infinityGlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE_NAME)
 SOONG_CONFIG_infinityGlobalVars_target_alternative_futex_waiters := $(TARGET_ALTERNATIVE_FUTEX_WAITERS)
 SOONG_CONFIG_infinityGlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CAMERA)
+SOONG_CONFIG_infinityGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
