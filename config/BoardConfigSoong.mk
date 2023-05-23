@@ -99,6 +99,7 @@ SOONG_CONFIG_infinityGlobalVars_target_alternative_futex_waiters := $(TARGET_ALT
 SOONG_CONFIG_infinityGlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_uses_oppo_camera := $(TARGET_USES_OPPO_CAMERA)
+SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
