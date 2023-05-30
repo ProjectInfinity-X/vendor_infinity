@@ -38,6 +38,7 @@ SOONG_CONFIG_infinityGlobalVars += \
     disable_bluetooth_le_set_host_feature \
     gralloc_handle_has_reserved_size \
     sdmcore_has_is_display_hw_available_func \
+    include_miui_camera \
     target_health_charging_control_charging_path \
     target_health_charging_control_charging_enabled \
     target_health_charging_control_charging_disabled \
@@ -93,6 +94,7 @@ SOONG_CONFIG_infinityGlobalVars_sdmcore_has_is_display_hw_available_func := $(TA
 SOONG_CONFIG_infinityGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 SOONG_CONFIG_infinityGlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE_NAME)
 SOONG_CONFIG_infinityGlobalVars_target_alternative_futex_waiters := $(TARGET_ALTERNATIVE_FUTEX_WAITERS)
+SOONG_CONFIG_infinityGlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CAMERA)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
