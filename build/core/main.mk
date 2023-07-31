@@ -1,2 +1,2 @@
-# Include LineageOS versions
-include $(TOPDIR)vendor/lineage/build/core/main_version.mk
+# Include Project Infinity X versions
+include $(TOPDIR)vendor/infinity/build/core/main_version.mk
