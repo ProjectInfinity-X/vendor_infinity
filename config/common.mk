@@ -224,6 +224,11 @@ PRODUCT_COPY_FILES += \
 # Pixel customization
 TARGET_SUPPORTS_GOOGLE_BATTERY ?= false
 
+# Protobuf - Workaround for prebuilt Qualcomm HAL
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
+
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
