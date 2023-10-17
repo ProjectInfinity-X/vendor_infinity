@@ -272,6 +272,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 include vendor/infinity/config/version.mk
 include vendor/infinity/config/packages.mk
+$(call inherit-product, vendor/infinity/config/clocks.mk)
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
