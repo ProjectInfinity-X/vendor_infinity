@@ -145,6 +145,12 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 SYSTEM_OPTIMIZE_JAVA ?= true
 SYSTEMUI_OPTIMIZE_JAVA ?= true
 
+# ColumbusService
+ifneq ($(TARGET_SUPPORTS_QUICK_TAP),false)
+PRODUCT_PACKAGES += \
+    ColumbusService
+endif
+
 # Disable dex2oat debug
 USE_DEX2OAT_DEBUG := false
 
@@ -221,6 +227,18 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 ifneq ($(TARGET_DISABLE_FASTBOOTD),true)
 PRODUCT_PACKAGES += \
     fastbootd
+endif
+    
+# FaceUnlock
+ifneq ($(TARGET_FACE_UNLOCK_SUPPORTED),false)
+PRODUCT_PACKAGES += \
+    FaceUnlock
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.face.sense_service=true
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
 # Filesystems tools
