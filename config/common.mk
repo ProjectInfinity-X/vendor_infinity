@@ -50,6 +50,10 @@ PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/infinity/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions
 
+# Cloned app exemption
+PRODUCT_COPY_FILES += \
+    vendor/infinity/prebuilt/common/etc/sysconfig/preinstalled-packages-platform-infinity-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/preinstalled-packages-platform-infinity-product.xml
+
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
