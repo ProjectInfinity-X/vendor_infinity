@@ -334,3 +334,6 @@ PRODUCT_COPY_FILES += \
 
 # Signing Keys
 include vendor/infinity-priv/keys/keys.mk
+
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
