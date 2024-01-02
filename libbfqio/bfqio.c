@@ -19,6 +19,9 @@
 #include <fcntl.h>
 #include <cutils/iosched_policy.h>
 #include <cutils/log.h>
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
 #include <pthread.h>
 #include <sys/stat.h>
 
