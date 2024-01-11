@@ -50,7 +50,8 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_trust_usb_control_enable \
     target_trust_usb_control_disable \
     uses_egl_display_array \
-    uses_legacy_fd_fbdev
+    uses_legacy_fd_fbdev \
+    uses_oplus_camera
 
 SOONG_CONFIG_NAMESPACES += infinityNvidiaVars
 SOONG_CONFIG_infinityNvidiaVars += \
@@ -80,6 +81,7 @@ SOONG_CONFIG_infinityQcomVars_qti_vibrator_use_effect_stream := $(TARGET_QTI_VIB
 SOONG_CONFIG_infinityQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_infinityQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
 SOONG_CONFIG_infinityGlobalVars_uses_legacy_fd_fbdev := $(TARGET_USES_LEGACY_FD_FBDEV)
+SOONG_CONFIG_infinityGlobalVars_uses_oplus_camera := $(TARGET_USES_OPLUS_CAMERA)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
