@@ -63,8 +63,6 @@
         <item>com.android.systemui</item>
     </string-array>
 
-    <bool name="config_cellBroadcastAppLinks">true</bool>
-
     <!-- Enable lockscreen rotation by default -->
     <bool name="config_enableLockScreenRotation">true</bool>
 
