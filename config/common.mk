@@ -156,11 +156,6 @@ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 PRODUCT_PACKAGES += \
     BtHelper
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
-
 # Call Recording
 TARGET_CALL_RECORDING_SUPPORTED ?= true
 ifneq ($(TARGET_CALL_RECORDING_SUPPORTED),false)
@@ -273,6 +268,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 include vendor/infinity/config/version.mk
 include vendor/infinity/config/packages.mk
 $(call inherit-product, vendor/infinity/config/clocks.mk)
+$(call inherit-product, vendor/infinity/config/animations.mk)
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
