@@ -931,3 +931,4 @@ function fixup_common_out_dir() {
 }
 
 export SKIP_ABI_CHECKS=true
+export USE_THINLTO_CACHE=true
