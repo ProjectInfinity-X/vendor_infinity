@@ -339,6 +339,10 @@ PRODUCT_PACKAGES += \
     TouchGestures
 endif
 
+# Workaround AOSP AM crash
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.fflag.override.settings_enable_monitor_phantom_procs=false
+
 # Signing Keys
 ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 include vendor/infinity-priv/keys/keys.mk
