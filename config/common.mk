@@ -277,7 +277,7 @@ $(call inherit-product, vendor/infinity/config/animations.mk)
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.config.ringtone=vibe.ogg \
-    ro.config.notification_sound=Ping.ogg
-    ro.config.alarm_alert=MorningAlarm.ogg
+    ro.config.notification_sound=Titan.ogg \
+    ro.config.alarm_alert=Oxygen.ogg
 
 include vendor/infinity/config/pixel_props.mk
