@@ -1,4 +1,5 @@
 # GameSpace
 PRODUCT_PACKAGES += \
     GameSpace \
-    BatteryStatsViewer
+    BatteryStatsViewer \
+    ExactCalculator
