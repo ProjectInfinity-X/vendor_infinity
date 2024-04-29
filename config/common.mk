@@ -111,7 +111,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Gapps
 ifeq ($(WITH_GAPPS),true)
-$(call inherit-product, vendor/gms/gms_mini.mk)
+$(call inherit-product, vendor/gms/common/common-vendor.mk)
 endif
 
 # Gboard side padding
