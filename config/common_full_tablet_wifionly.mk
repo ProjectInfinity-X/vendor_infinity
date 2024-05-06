@@ -8,6 +8,7 @@ PRODUCT_PACKAGES += \
 
 # Include LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/voltage/overlay/dictionaries
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/voltage/overlay/dictionaries
 
 # Settings
 PRODUCT_PRODUCT_PROPERTIES += \
