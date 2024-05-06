@@ -3,7 +3,11 @@ $(call inherit-product, vendor/infinity/config/common.mk)
 
 # Required packages
 PRODUCT_PACKAGES += \
-    androidx.window.extensions
+    androidx.window.extensions \
+    LatinIME
+
+# Include LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/voltage/overlay/dictionaries
 
 # Settings
 PRODUCT_PRODUCT_PROPERTIES += \
