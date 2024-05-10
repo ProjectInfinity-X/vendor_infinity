@@ -112,6 +112,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Gapps
 ifeq ($(WITH_GAPPS),true)
 $(call inherit-product, vendor/gms/common/common-vendor.mk)
+
+# UpdaterGMSOverlay
+PRODUCT_PACKAGES += \
+    UpdaterGMSOverlay
 endif
 
 # Gboard side padding
@@ -286,3 +290,10 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.config.alarm_alert=Oxygen.ogg
 
 include vendor/infinity/config/pixel_props.mk
+
+# Updater
+PRODUCT_PACKAGES += \
+    Updater
+
+PRODUCT_COPY_FILES += \
+    vendor/infinity/prebuilt/common/etc/init/init.infinity-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.infinity-updater.rc
