@@ -170,8 +170,13 @@ PRODUCT_PACKAGES += \
 
 # Charger
 PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
+    charger_res_images
+
+ifneq ($(WITH_INFINITY_CHARGER),false)
+PRODUCT_PACKAGES += \
+    infinity_charger_animation \
+    infinity_charger_animation_vendor
+endif
 
 # Call Recording
 TARGET_CALL_RECORDING_SUPPORTED ?= true
