@@ -310,6 +310,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.storage_manager.enabled=true
 
+# Default wifi country code
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.boot.wificountrycode?=00
+
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
     procmem
