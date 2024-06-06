@@ -278,6 +278,10 @@ PRODUCT_COPY_FILES += \
     packages/apps/PocketMode/privapp-permissions-pocketmode.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-pocketmode.xml
 endif
 
+# Quick Tap
+PRODUCT_COPY_FILES += \
+    vendor/infinity/prebuilt/common/etc/sysconfig/quick_tap.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/quick_tap.xml
+
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
