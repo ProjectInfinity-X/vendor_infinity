@@ -525,3 +525,19 @@ uses_oplus_camera {
         },
     },
 }
+
+soong_config_module_type {
+    name: "uses_oplus_touch",
+    module_type: "cc_defaults",
+    config_namespace: "infinityGlobalVars",
+    bool_variables: ["uses_oplus_touch"],
+    properties: ["cppflags"],
+}
+uses_oplus_touch {
+    name: "uses_oplus_touch_defaults",
+    soong_config_variables: {
+        uses_oplus_touch: {
+            cppflags: ["-DUSES_OPLUS_TOUCH"],
+        },
+    },
+}
