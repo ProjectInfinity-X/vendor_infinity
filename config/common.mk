@@ -113,9 +113,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 ifeq ($(WITH_GAPPS),true)
 $(call inherit-product, vendor/gms/common/common-vendor.mk)
 
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 # UpdaterGMSOverlay
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
+endif
 endif
 
 # Gboard side padding
@@ -301,12 +303,14 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 include vendor/infinity/config/pixel_props.mk
 
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 # Updater
 PRODUCT_PACKAGES += \
     Updater
 
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/etc/init/init.infinity-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.infinity-updater.rc
+endif
 
 # Signing Keys
 include vendor/infinity-priv/keys/keys.mk
