@@ -268,11 +268,14 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # PocketMode
+TARGET_INCLUDES_POCKET_MODE ?= true
+ifeq ($(TARGET_INCLUDES_POCKET_MODE),true)
 PRODUCT_PACKAGES += \
     PocketMode
 
 PRODUCT_COPY_FILES += \
     packages/apps/PocketMode/privapp-permissions-pocketmode.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-pocketmode.xml
+endif
 
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
