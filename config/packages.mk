@@ -3,8 +3,7 @@ PRODUCT_PACKAGES += \
     GameSpace \
     BatteryStatsViewer \
     ExactCalculator \
-    OmniJaws \
-    OmniStyle
+    OmniJaws
 
 # Face Unlock
 PRODUCT_PACKAGES += \
