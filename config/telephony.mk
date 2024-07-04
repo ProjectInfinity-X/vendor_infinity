@@ -1,6 +1,10 @@
 # GMS
 ifeq ($(WITH_GMS),true)
 WITH_GMS_COMMS_SUITE := true
+
+ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
+$(call inherit-product, vendor/bcr/bcr.mk)
+endif
 endif
 
 # Sensitive Phone Numbers list
