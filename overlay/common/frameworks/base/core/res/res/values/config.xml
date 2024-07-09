@@ -430,6 +430,11 @@
     <!-- Name of a font family to use as regular font. For theming purpose. -->
     <string name="config_regularFontFamily" translatable="false">google-sans</string>
 
+    <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
+    <string name="config_headlineFontFamily">google-sans</string>
+    <string name="config_headlineFontFamilyMedium">google-sans-medium</string>
+    <string name="config_headlineFontFeatureSettings">ss03</string>
+
     <!-- Maximum velocity to initiate a fling, as measured in dips per second. -->
      <dimen name="config_viewMaxFlingVelocity">12000dp</dimen>
 
