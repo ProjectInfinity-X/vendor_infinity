@@ -23,6 +23,7 @@
         <item>com.android.systemui</item>
         <item>com.android.systemui.plugin.globalactions.wallet</item>
         <item>org.lineageos.settings.device</item>
+        <item>org.lineageos.device.DeviceSettings</item>
         <item>com.android.systemui.clocks.bignum</item>
         <item>com.android.systemui.clocks.calligraphy</item>
         <item>com.android.systemui.clocks.flex</item>
