@@ -1,7 +1,5 @@
-# GMS
-ifeq ($(WITH_GMS),true)
-WITH_GMS_COMMS_SUITE := true
-
+# BCR
+ifeq ($(WITH_GAPPS),true)
 ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
 $(call inherit-product, vendor/bcr/bcr.mk)
 endif
