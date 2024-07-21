@@ -78,7 +78,8 @@ PRODUCT_COPY_FILES += \
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/infinity/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+    vendor/infinity/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml \
+    vendor/infinity/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
 
 # infinity-specific init rc file
 PRODUCT_COPY_FILES += \
