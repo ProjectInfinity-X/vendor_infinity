@@ -333,6 +333,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/etc/init/init.infinity-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.infinity-updater.rc
 
+# TouchGestures
+ifeq ($(TARGET_SUPPORTS_TOUCHGESTURES),true)
+PRODUCT_PACKAGES += \
+    TouchGestures
+endif
+
 # Signing Keys
 include vendor/infinity-priv/keys/keys.mk
 
