@@ -30,6 +30,10 @@ PRODUCT_PACKAGES += \
     lineage_charger_animation_vendor
 endif
 
+# Display
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    debug.sf.frame_rate_multiple_threshold=60
+
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.recorder.show_manufacturer_and_model=true
