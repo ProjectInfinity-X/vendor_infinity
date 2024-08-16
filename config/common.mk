@@ -340,7 +340,11 @@ PRODUCT_PACKAGES += \
 endif
 
 # Signing Keys
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 include vendor/infinity-priv/keys/keys.mk
+else
+-include vendor/infinity-priv/keys/keys.mk
+endif
 
 # Certification
 $(call inherit-product-if-exists, vendor/certification/config.mk)
