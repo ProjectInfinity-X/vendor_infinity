@@ -215,6 +215,14 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/%/libfuse-lite.so \
     system/%/libntfs-3g.so
 
+# Memtag
+PRODUCT_PRODUCT_PROPERTIES += \
+    arm64.memtag.process.system_server=off \
+    persist.arm64.memtag.app.com.android.se=off \
+    persist.arm64.memtag.app.com.google.android.bluetooth=off \
+    persist.arm64.memtag.app.com.android.nfc=off \
+    persist.arm64.memtag.system_server=off
+
 # Openssh
 PRODUCT_PACKAGES += \
     scp \
