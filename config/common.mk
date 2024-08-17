@@ -314,3 +314,22 @@ include vendor/infinity-priv/keys/keys.mk
 else
 -include vendor/infinity-priv/keys/keys.mk
 endif
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.pihooks_mainline_BRAND?=google \
+    persist.sys.pihooks_mainline_DEVICE?=caiman \
+    persist.sys.pihooks_mainline_MANUFACTURER?=Google \
+    persist.sys.pihooks_mainline_PRODUCT?=caiman \
+    persist.sys.pihooks_BRAND?=google \
+    persist.sys.pihooks_MANUFACTURER?=Google \
+    persist.sys.pihooks_DEVICE?=tokay \
+    persist.sys.pihooks_PRODUCT?=tokay_beta \
+    persist.sys.pihooks_DEVICE_INITIAL_SDK_INT?=25 \
+    persist.sys.pihooks_SECURITY_PATCH?=2024-09-05 \
+    persist.sys.pihooks_ID?=AP41.240823.009
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PihooksGmsFp="google/tokay_beta/tokay:15/AP41.240823.009/12329489:user/release-keys" \
+    PihooksGmsModel="Pixel 9" \
+    PihooksBuildFp="google/caiman/caiman:14/AD1A.240530.047.U1/12150698:user/release-keys" \
+    PihooksBuildModel="Pixel 9 Pro"
