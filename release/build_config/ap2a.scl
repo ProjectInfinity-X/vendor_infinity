@@ -17,6 +17,7 @@ load("//build/make/core/release_config.scl", "value")
 
 values = [
     # keep-sorted start numeric=yes
+    value("RELEASE_ACONFIG_FLAG_DEFAULT_PERMISSION", "READ_WRITE"),
     value("RELEASE_ACONFIG_VALUE_SETS", "aconfig_value_set-custom-ap2a"),
     # keep-sorted end
 ]
