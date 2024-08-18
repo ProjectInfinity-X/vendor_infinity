@@ -110,6 +110,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 ifeq ($(WITH_GAPPS),true)
 $(call inherit-product, vendor/gms/common/common-vendor.mk)
 
+DONT_DEXPREOPT_PREBUILTS := true
+
 # UpdaterGMSOverlay
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
