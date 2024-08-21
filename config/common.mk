@@ -124,6 +124,10 @@ PRODUCT_PACKAGES += \
     product_charger_res_images \
     product_charger_res_images_vendor
 
+# Bootanim
+PRODUCT_COPY_FILES += \
+    vendor/infinity/prebuilt/common/etc/init/init.bootanim.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.bootanim.rc
+
 # Config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig \
