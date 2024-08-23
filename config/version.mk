@@ -49,6 +49,7 @@ INFINITY_FINGERPRINT := Project_Infinity/$(INFINITY_MOD_VERSION)/$(TARGET_PRODUC
 
 # INFINITY System Version
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.infinity.build.version=$(INFINITY_VERSION) \
   ro.infinity.build.status=$(INFINITY_BUILD_TYPE) \
   ro.modversion=$(INFINITY_MOD_VERSION) \
   ro.infinity.build.date=$(INFINITY_BUILD_DATE) \
