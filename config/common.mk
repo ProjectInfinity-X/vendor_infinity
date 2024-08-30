@@ -150,6 +150,15 @@ SYSTEMUI_OPTIMIZE_JAVA ?= true
 # Disable dex2oat debug
 USE_DEX2OAT_DEBUG := false
 
+# DeviceAsWebcam
+ifeq ($(TARGET_BUILD_DEVICE_AS_WEBCAM), true)
+    PRODUCT_PACKAGES += \
+        DeviceAsWebcam
+
+    PRODUCT_VENDOR_PROPERTIES += \
+        ro.usb.uvc.enabled=true
+endif
+
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
