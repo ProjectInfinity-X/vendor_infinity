@@ -1,3 +1,6 @@
+CLANG_VERSION=$(build/soong/scripts/get_clang_version.py)
+export LLVM_AOSP_PREBUILTS_VERSION="${CLANG_VERSION}"
+
 function mk_timer()
 {
     local start_time=$(date +"%s")
