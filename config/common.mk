@@ -339,6 +339,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.config.alarm_alert=Oxygen.ogg
 
 include vendor/infinity/config/pixel_props.mk
+include vendor/infinity/config/game_props.mk
 
 # Updater
 ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
