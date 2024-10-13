@@ -333,3 +333,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PihooksGmsModel="Pixel 7 Pro" \
     PihooksBuildFp="google/caiman/caiman:14/AD1A.240530.047.U1/12150698:user/release-keys" \
     PihooksBuildModel="Pixel 9 Pro"
+
+# GameProps
+include vendor/infinity/config/game_props.mk
