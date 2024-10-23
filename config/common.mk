@@ -35,6 +35,9 @@ endif
 # Audio
 $(call inherit-product, vendor/infinity/audio/audio.mk)
 
+PRODUCT_PACKAGES += \
+    Recorder
+
 # Additional Packages
 include vendor/extras/prebuilts.mk
 
