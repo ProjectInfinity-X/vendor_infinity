@@ -314,7 +314,11 @@ PRODUCT_PACKAGES += \
     KeyboardNoNavigationBarOverlay \
     Launcher3NoHintOverlay \
     NetworkStackOverlay \
-    PermissionControllerOverlay
+    PermissionControllerOverlay \
+    DeviceConfigOverlay
+    
+PRODUCT_COPY_FILES += \
+    vendor/infinity/overlay/config-system_ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/overlay/config/config.xml
 
 # Translations
 CUSTOM_LOCALES += \

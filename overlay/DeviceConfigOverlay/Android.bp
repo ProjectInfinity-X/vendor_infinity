@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "DeviceConfigOverlay",
+    system_ext_specific: true,
+}
