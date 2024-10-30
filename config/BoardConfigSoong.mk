@@ -46,7 +46,6 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_health_charging_control_supports_toggle \
     target_libcameraservice_ext_lib \
     target_init_vendor_lib \
-    target_ld_shim_libs \
     target_power_libperfmgr_mode_extension_lib \
     target_powershare_path \
     target_powershare_enabled \
@@ -132,7 +131,6 @@ SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_deadline
 SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_toggle := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE)
 SOONG_CONFIG_infinityGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
 SOONG_CONFIG_infinityGlobalVars_target_libcameraservice_ext_lib := $(TARGET_CAMERA_SERVICE_EXT_LIB)
-SOONG_CONFIG_infinityGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
 SOONG_CONFIG_infinityGlobalVars_target_power_libperfmgr_mode_extension_lib := $(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB)
 SOONG_CONFIG_infinityGlobalVars_target_powershare_path := $(TARGET_POWERSHARE_PATH)
 SOONG_CONFIG_infinityGlobalVars_target_powershare_enabled := $(TARGET_POWERSHARE_ENABLED)
