@@ -272,6 +272,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/infinity/overlay/no-rro
 
 PRODUCT_PACKAGES += \
+    AndroidBlackThemeOverlay \
     DocumentsUIOverlay \
     NavigationBarNoHintOverlay \
     NetworkStackOverlay
