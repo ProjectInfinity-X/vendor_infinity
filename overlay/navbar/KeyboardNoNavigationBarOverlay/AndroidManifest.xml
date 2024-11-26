@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.infinity.overlay.customization.navbar.nohint"
+    package="com.infinity.overlay.customization.navbar.keyboard.nonavbar"
     android:versionCode="1"
     android:versionName="1.0">
     <overlay android:targetPackage="android" android:priority="1" />
 
-    <application android:label="NavigationBarNoHint" android:hasCode="false"/>
+    <application android:label="KeyboardNoNavigationBarOverlay" android:hasCode="false"/>
 </manifest>

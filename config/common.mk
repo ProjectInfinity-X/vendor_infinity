@@ -153,7 +153,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 # Freeform Windows
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
-
+    
 # Gamespace
 PRODUCT_PACKAGES += \
     GameSpace
@@ -201,6 +201,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Recorder
 
+# ThemeOverlays
+include packages/overlays/Themes/themes.mk
+
 # rsync
 PRODUCT_PACKAGES += \
     rsync
@@ -211,6 +214,10 @@ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 # BtHelper
 PRODUCT_PACKAGES += \
     BtHelper
+    
+# BatteryStatsViewer
+PRODUCT_PACKAGES += \
+    BatteryStatsViewer
 
 # Storage manager
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -254,7 +261,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.face.sense_service=true
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
 # Lineage-specific file
@@ -278,9 +285,9 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/infinity/overlay/no-rro
 
 PRODUCT_PACKAGES += \
-    AndroidBlackThemeOverlay \
     DocumentsUIOverlay \
     NavigationBarNoHintOverlay \
+    KeyboardNoNavigationBarOverlay \
     NetworkStackOverlay
 
 # Translations

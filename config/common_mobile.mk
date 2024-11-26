@@ -3,6 +3,7 @@ $(call inherit-product, vendor/infinity/config/common.mk)
 
 # Apps
 PRODUCT_PACKAGES += \
+    AvatarPicker \
     LatinIME
 
 # Media
@@ -13,11 +14,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_PACKAGES += \
     QuickAccessWallet
 
-# Themes
-PRODUCT_PACKAGES += \
-    ThemePicker \
-    ThemesStub
-    
 # TextClassifier
 PRODUCT_PACKAGES += \
     libtextclassifier_annotator_en_model \
@@ -30,3 +26,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/textclassifier/lang_id.model \
     system/etc/textclassifier/textclassifier.en.model \
     system/etc/textclassifier/textclassifier.universal.model
+
+# Themes
+PRODUCT_PACKAGES += \
+    ThemePicker \
+    ThemesStub
