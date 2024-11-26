@@ -338,6 +338,13 @@ include vendor/infinity/config/fonts.mk
 include vendor/infinity/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
+    
+# TFLite service.
+PRODUCT_PACKAGES += libtensorflowlite_jni
+# Allow TFLite service modules to be installed to the system partition
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/lib/libtensorflowlite_jni.so \
+ 	system/lib64/libtensorflowlite_jni.so
 
 # Disable async MTE on a few processes
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
