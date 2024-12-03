@@ -21,7 +21,7 @@ INFINITY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(INFINITY_VERSION).zip
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 .PHONY: bacon
-bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
+bacon: $(BUILT_TARGET_FILES_PACKAGE) $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(INFINITY_TARGET_PACKAGE)
 	$(hide) ./vendor/infinity/build/tools/generate_ota_info.sh $(INFINITY_TARGET_PACKAGE)
 	echo -e ${CL_BLD}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
