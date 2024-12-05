@@ -59,4 +59,8 @@
     <bool name="config_swipeToOpenGlanceableHub">true</bool>
     
     <bool name="config_turbulenceNoise" translatable="false">false</bool>
+    
+    <!-- Time (in ms) to delay the bouncer views from showing when passive auth may be used for
+    device entry. -->
+    <integer name="primary_bouncer_passive_auth_delay">0</integer>
 </resources>
