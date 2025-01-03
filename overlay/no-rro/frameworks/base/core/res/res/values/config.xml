@@ -51,4 +51,7 @@
     <string name="config_headlineFontFamily">google-sans-flex</string>
     <string name="config_headlineFontFamilyMedium">google-sans-flex</string>
     <string name="config_headlineFontFeatureSettings">ss03</string>
+
+    <!-- Circle to search -->
+    <string name="config_defaultContextualSearchPackageName" translatable="false">com.google.android.googlequicksearchbox</string>
 </resources>
