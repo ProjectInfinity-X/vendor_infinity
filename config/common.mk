@@ -102,13 +102,11 @@ PRODUCT_PACKAGES += \
     build-manifest
 
 # Updater
-ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 PRODUCT_PACKAGES += \
     Updater
 
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/etc/init/init.infinity-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.infinity-updater.rc
-endif
 
 # Blurs
 ifeq ($(TARGET_SUPPORTS_BLUR),true)
