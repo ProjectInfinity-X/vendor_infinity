@@ -168,6 +168,10 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 # Freeform Windows
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
+
+# FRP
+ PRODUCT_COPY_FILES += \
+     vendor/infinity/prebuilt/common/bin/wipe-frp.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wipe-frp
     
 # Gamespace
 PRODUCT_PACKAGES += \
