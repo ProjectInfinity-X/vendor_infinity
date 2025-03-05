@@ -187,9 +187,17 @@ PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
 endif
 
-# OPA configuration
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.opa.eligible_device=true
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
+ifeq ($(TARGET_SHIPS_FULL_GAPPS),true)
+$(error TARGET_SHIPS_FULL_GAPPS is not allowed on OFFICIAL builds)
+endif
+endif
+
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
+ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
+$(error TARGET_BUILD_GOOGLE_TELEPHONY is not allowed on OFFICIAL builds)
+endif
+endif
     
 ifeq ($(TARGET_SHIPS_FULL_GAPPS),true)
 ifneq ($(WITH_GAPPS),true)
@@ -202,6 +210,10 @@ ifneq ($(WITH_GAPPS),true)
 $(warning TARGET_BUILD_GOOGLE_TELEPHONY is declared without declaration of WITH_GAPPS to true, hence it will create no impact)
 endif
 endif
+
+# OPA configuration
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.opa.eligible_device=true
 
 # Openssh
 PRODUCT_PACKAGES += \
