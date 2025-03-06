@@ -18,7 +18,7 @@
     package="androidx.preference.ktx" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="21"
         android:targetSdkVersion="31" />
 
 </manifest>
