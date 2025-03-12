@@ -342,6 +342,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
     NetworkStackOverlay \
+    NfcOverlay \
     PermissionControllerOverlay
 
 AXION_CPU_SMALL_CORES ?= 0,1,2,3
