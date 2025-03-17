@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-build_flag_declarations {
-    name: "build_flags-build-release-lineage",
-    srcs: [
-        "RELEASE_*.textproto",
-    ],
+aconfig_values {
+  name: "aconfig-values-bp1a-com.android.window.flags-all",
+  package: "com.android.window.flags",
+  srcs: [
+    "*_flag_values.textproto",
+  ]
 }
