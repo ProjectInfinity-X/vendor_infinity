@@ -6,7 +6,7 @@ android_library_import {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    min_sdk_version: "14",
+    min_sdk_version: "21",
     static_libs: [
         "androidx.core_core-ktx",
         "androidx.fragment_fragment-ktx",
@@ -22,7 +22,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    min_sdk_version: "14",
+    min_sdk_version: "21",
     manifest: "androidx/preference/preference-ktx/AndroidManifest.xml",
     static_libs: [
         "androidx.core_core-ktx",
