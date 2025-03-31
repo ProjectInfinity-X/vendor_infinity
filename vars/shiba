@@ -1,0 +1,27 @@
+# Pixel 8
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  # common repos in husky
+)
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="BP1A.250305.019"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-15.0.0_r14"
+readonly aosp_tag="android-15.0.0_r20"
+
+readonly build_number="13003188"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/shiba-bp1a.250305.019-factory-4401ad97.zip"
+readonly image_sha256="4401ad979ea4f5dbfabb51cd865df1dfae90a23ef4943a281d3f749002308117"
+
+readonly flash_url="https://flash.android.com/build/13003188?target=shiba-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/shiba-ota-bp1a.250305.019-1f4e6c4d.zip"
+readonly ota_sha256="1f4e6c4da9ee3419d8547848a13021badad86a7f249fb5a0983df04b47fe92ae"
+
+readonly security_patch="2025-03-05"
