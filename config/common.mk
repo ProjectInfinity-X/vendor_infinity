@@ -182,37 +182,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Gapps
 ifeq ($(WITH_GAPPS),true)
-$(call inherit-product, vendor/google/gms/config.mk)
-
-DONT_DEXPREOPT_PREBUILTS := true
+$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
 
 # UpdaterGMSOverlay
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
-endif
-
-ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
-ifeq ($(TARGET_SHIPS_FULL_GAPPS),true)
-$(error TARGET_SHIPS_FULL_GAPPS is not allowed on OFFICIAL builds)
-endif
-endif
-
-ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
-ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
-$(error TARGET_BUILD_GOOGLE_TELEPHONY is not allowed on OFFICIAL builds)
-endif
-endif
-    
-ifeq ($(TARGET_SHIPS_FULL_GAPPS),true)
-ifneq ($(WITH_GAPPS),true)
-$(warning TARGET_SHIPS_FULL_GAPPS is declared without declaration of WITH_GAPPS to true, hence it will create no impact)
-endif
-endif
-
-ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
-ifneq ($(WITH_GAPPS),true)
-$(warning TARGET_BUILD_GOOGLE_TELEPHONY is declared without declaration of WITH_GAPPS to true, hence it will create no impact)
-endif
 endif
 
 # OPA configuration
