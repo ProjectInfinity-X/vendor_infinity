@@ -204,8 +204,8 @@ endif
 endif
 
 ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
-ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
-$(error TARGET_BUILD_GOOGLE_TELEPHONY is not allowed on OFFICIAL builds)
+ifeq ($(TARGET_SHIPS_GOOGLE_DIALER),true)
+$(error TARGET_SHIPS_GOOGLE_DIALER is not allowed on OFFICIAL builds)
 endif
 endif
     
@@ -215,9 +215,9 @@ $(warning TARGET_SHIPS_FULL_GAPPS is declared without declaration of WITH_GAPPS 
 endif
 endif
 
-ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
+ifeq ($(TARGET_SHIPS_GOOGLE_DIALER),true)
 ifneq ($(WITH_GAPPS),true)
-$(warning TARGET_BUILD_GOOGLE_TELEPHONY is declared without declaration of WITH_GAPPS to true, hence it will create no impact)
+$(warning TARGET_SHIPS_GOOGLE_DIALER is declared without declaration of WITH_GAPPS to true, hence it will create no impact)
 endif
 endif
 

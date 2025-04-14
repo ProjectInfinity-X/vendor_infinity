@@ -1,6 +1,6 @@
 # BCR
 ifeq ($(WITH_GAPPS),true)
-ifeq ($(TARGET_BUILD_GOOGLE_TELEPHONY),true)
+ifeq ($(TARGET_SHIPS_GOOGLE_DIALER),true)
 $(call inherit-product, vendor/bcr/bcr.mk)
 endif
 endif
