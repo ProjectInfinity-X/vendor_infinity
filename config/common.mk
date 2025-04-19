@@ -245,6 +245,10 @@ PRODUCT_PACKAGES += \
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
 
+# TouchGestures
+PRODUCT_PACKAGES += \
+    TouchGestures
+
 # Overlay
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural;com.google.android.systemui.gxoverlay
