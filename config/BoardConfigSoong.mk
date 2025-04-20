@@ -115,6 +115,20 @@ ifneq ($(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB),)
     $(call soong_config_set,power_libperfmgr,mode_extension_lib,$(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB))
 endif
 
+# PowerShare HAL
+ifneq ($(TARGET_POWERSHARE_PATH),)
+    $(warning TARGET_POWERSHARE_PATH is deprecated, please migrate to soong_config_set,lineage_powershare,powershare_path)
+    $(call soong_config_set,lineage_powershare,powershare_path,$(TARGET_POWERSHARE_PATH))
+endif
+ifneq ($(TARGET_POWERSHARE_ENABLED),)
+    $(warning TARGET_POWERSHARE_ENABLED is deprecated, please migrate to soong_config_set,lineage_powershare,powershare_enabled)
+    $(call soong_config_set,lineage_powershare,powershare_enabled,$(TARGET_POWERSHARE_ENABLED))
+endif
+ifneq ($(TARGET_POWERSHARE_DISABLED),)
+    $(warning TARGET_POWERSHARE_DISABLED is deprecated, please migrate to soong_config_set,lineage_powershare,powershare_disabled)
+    $(call soong_config_set,lineage_powershare,powershare_disabled,$(TARGET_POWERSHARE_DISABLED))
+endif
+
 # Recovery
 ifneq ($(BOOTLOADER_MESSAGE_OFFSET),)
     $(warning BOOTLOADER_MESSAGE_OFFSET is deprecated, please migrate to soong_config_set,lineage_recovery,bootloader_message_offset)
