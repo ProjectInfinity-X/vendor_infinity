@@ -46,7 +46,6 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_powershare_path \
     target_powershare_enabled \
     target_powershare_disabled \
-    target_surfaceflinger_udfps_lib \
     target_trust_usb_control_path \
     target_trust_usb_control_enable \
     target_trust_usb_control_disable \
@@ -77,7 +76,6 @@ TARGET_CAMERA_SERVICE_EXT_LIB ?= libcameraservice_ext_lib
 TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB ?= libperfmgr-ext
 TARGET_POWERSHARE_ENABLED ?= 1
 TARGET_POWERSHARE_DISABLED ?= 0
-TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
 TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
 TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
 TARGET_TRUST_USB_CONTROL_DISABLE ?= 0
@@ -97,7 +95,6 @@ SOONG_CONFIG_infinityGlobalVars_target_power_libperfmgr_mode_extension_lib := $(
 SOONG_CONFIG_infinityGlobalVars_target_powershare_path := $(TARGET_POWERSHARE_PATH)
 SOONG_CONFIG_infinityGlobalVars_target_powershare_enabled := $(TARGET_POWERSHARE_ENABLED)
 SOONG_CONFIG_infinityGlobalVars_target_powershare_disabled := $(TARGET_POWERSHARE_DISABLED)
-SOONG_CONFIG_infinityGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
@@ -106,3 +103,8 @@ SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_disable := $(TARGET_TRU
  ifneq ($(TARGET_INIT_VENDOR_LIB),)
      $(call soong_config_set,libinit,vendor_init_lib,$(TARGET_INIT_VENDOR_LIB))
  endif
+
+# Surfaceflinger
+ifneq ($(TARGET_SURFACEFLINGER_UDFPS_LIB),)
+    $(call soong_config_set,surfaceflinger,udfps_lib,$(TARGET_SURFACEFLINGER_UDFPS_LIB))
+endif
