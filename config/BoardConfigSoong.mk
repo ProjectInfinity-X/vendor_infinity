@@ -43,9 +43,6 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_health_charging_control_supports_toggle \
     target_libcameraservice_ext_lib \
     target_power_libperfmgr_mode_extension_lib \
-    target_powershare_path \
-    target_powershare_enabled \
-    target_powershare_disabled \
     target_trust_usb_control_path \
     target_trust_usb_control_enable \
     target_trust_usb_control_disable \
@@ -74,8 +71,6 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE ?= false
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE ?= true
 TARGET_CAMERA_SERVICE_EXT_LIB ?= libcameraservice_ext_lib
 TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB ?= libperfmgr-ext
-TARGET_POWERSHARE_ENABLED ?= 1
-TARGET_POWERSHARE_DISABLED ?= 0
 TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
 TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
 TARGET_TRUST_USB_CONTROL_DISABLE ?= 0
@@ -92,9 +87,6 @@ SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_deadline
 SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_toggle := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE)
 SOONG_CONFIG_infinityGlobalVars_target_libcameraservice_ext_lib := $(TARGET_CAMERA_SERVICE_EXT_LIB)
 SOONG_CONFIG_infinityGlobalVars_target_power_libperfmgr_mode_extension_lib := $(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB)
-SOONG_CONFIG_infinityGlobalVars_target_powershare_path := $(TARGET_POWERSHARE_PATH)
-SOONG_CONFIG_infinityGlobalVars_target_powershare_enabled := $(TARGET_POWERSHARE_ENABLED)
-SOONG_CONFIG_infinityGlobalVars_target_powershare_disabled := $(TARGET_POWERSHARE_DISABLED)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
 SOONG_CONFIG_infinityGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
