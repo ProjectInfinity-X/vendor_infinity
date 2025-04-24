@@ -31,13 +31,6 @@ SOONG_CONFIG_infinityGlobalVars += \
     uses_miui_camera \
     camera_needs_client_info_lib \
     include_miui_camera \
-    target_health_charging_control_charging_path \
-    target_health_charging_control_charging_enabled \
-    target_health_charging_control_charging_disabled \
-    target_health_charging_control_deadline_path \
-    target_health_charging_control_supports_bypass \
-    target_health_charging_control_supports_deadline \
-    target_health_charging_control_supports_toggle \
     target_libcameraservice_ext_lib \
     uses_oplus_touch \
     uses_oplus_camera \
@@ -53,21 +46,9 @@ SOONG_CONFIG_infinityGlobalVars_target_camera_package_name := $(TARGET_CAMERA_PA
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
 
 # Set default values
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED ?= 1
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED ?= 0
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS ?= true
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE ?= false
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE ?= true
 TARGET_CAMERA_SERVICE_EXT_LIB ?= libcameraservice_ext_lib
 
 # Soong value variables
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_charging_path := $(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_charging_enabled := $(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_charging_disabled := $(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_deadline_path := $(TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_bypass := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_deadline := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE)
-SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_toggle := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE)
 SOONG_CONFIG_infinityGlobalVars_target_libcameraservice_ext_lib := $(TARGET_CAMERA_SERVICE_EXT_LIB)
 
 # Camera
@@ -79,6 +60,32 @@ endif
  ifneq ($(TARGET_INIT_VENDOR_LIB),)
      $(call soong_config_set,libinit,vendor_init_lib,$(TARGET_INIT_VENDOR_LIB))
  endif
+
+# Lineage Health HAL
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH),)
+    $(call soong_config_set,lineage_health,charging_control_charging_path,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH),)
+    $(call soong_config_set,lineage_health,charging_control_deadline_path,$(TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED),)
+    $(call soong_config_set,lineage_health,charging_control_charging_enabled,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED),)
+    $(call soong_config_set,lineage_health,charging_control_charging_disabled,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS),)
+    $(call soong_config_set,lineage_health,charging_control_supports_bypass,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE),)
+    $(call soong_config_set,lineage_health,charging_control_supports_deadline,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT),)
+    $(call soong_config_set,lineage_health,charging_control_supports_limit,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT))
+endif
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE),)
+    $(call soong_config_set,lineage_health,charging_control_supports_toggle,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE))
+endif
 
 # Surfaceflinger
 ifneq ($(TARGET_SURFACEFLINGER_UDFPS_LIB),)
