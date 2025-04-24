@@ -30,7 +30,6 @@ SOONG_CONFIG_NAMESPACES += infinityGlobalVars
 SOONG_CONFIG_infinityGlobalVars += \
     additional_gralloc_10_usage_bits \
     uses_miui_camera \
-    camera_override_format_from_reserved \
     camera_needs_client_info_lib \
     include_miui_camera \
     target_health_charging_control_charging_path \
@@ -46,7 +45,6 @@ SOONG_CONFIG_infinityGlobalVars += \
     target_camera_package_name
 
 # Soong bool variables
-SOONG_CONFIG_infinityGlobalVars_camera_override_format_from_reserved := $(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED)
 SOONG_CONFIG_infinityGlobalVars_uses_miui_camera := $(TARGET_USES_MIUI_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
 SOONG_CONFIG_infinityGlobalVars_uses_oplus_touch := $(TARGET_USES_OPLUS_TOUCH)
@@ -57,7 +55,6 @@ SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_C
 
 # Set default values
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
-TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED ?= false
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED ?= 1
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED ?= 0
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS ?= true
@@ -75,6 +72,11 @@ SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_bypass :
 SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_deadline := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE)
 SOONG_CONFIG_infinityGlobalVars_target_health_charging_control_supports_toggle := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE)
 SOONG_CONFIG_infinityGlobalVars_target_libcameraservice_ext_lib := $(TARGET_CAMERA_SERVICE_EXT_LIB)
+
+# Camera
+ifneq ($(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED),)
+    $(call soong_config_set,camera,override_format_from_reserved,$(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED))
+endif
 
 # Vendor init
  ifneq ($(TARGET_INIT_VENDOR_LIB),)
