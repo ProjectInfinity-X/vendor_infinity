@@ -30,18 +30,12 @@ SOONG_CONFIG_NAMESPACES += infinityGlobalVars
 SOONG_CONFIG_infinityGlobalVars += \
     uses_miui_camera \
     camera_needs_client_info_lib \
-    include_miui_camera \
     target_libcameraservice_ext_lib \
-    uses_oplus_touch \
-    uses_oplus_camera \
     target_camera_package_name
 
 # Soong bool variables
 SOONG_CONFIG_infinityGlobalVars_uses_miui_camera := $(TARGET_USES_MIUI_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
-SOONG_CONFIG_infinityGlobalVars_uses_oplus_touch := $(TARGET_USES_OPLUS_TOUCH)
-SOONG_CONFIG_infinityGlobalVars_uses_oplus_camera := $(TARGET_USES_OPLUS_CAMERA)
-SOONG_CONFIG_infinityGlobalVars_include_miui_camera := $(TARGET_INCLUDES_MIUI_CAMERA)
 SOONG_CONFIG_infinityGlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE_NAME)
 SOONG_CONFIG_infinityGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
 
