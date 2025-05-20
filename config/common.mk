@@ -343,8 +343,8 @@ PRODUCT_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
     NavigationBarNoHintOverlay \
-    KeyboardNoNavigationBarOverlay \
-    Launcher3NoHintOverlay \
+    GesturalNavigationNoSpace \
+    GesturalNavigationNarrowSpace \
     NetworkStackOverlay \
     PermissionControllerOverlay \
     DeviceConfigOverlay
