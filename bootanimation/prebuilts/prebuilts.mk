@@ -18,7 +18,4 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/infinity/prebuilts
 
 PRODUCT_COPY_FILES += \
-    vendor/infinity/bootanimation/prebuilts/bootanimation_ctos.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation_ctos.zip \
-    vendor/infinity/bootanimation/prebuilts/bootanimation_cyberpunk.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation_cyberpunk.zip \
-    vendor/infinity/bootanimation/prebuilts/bootanimation_evo_reveal.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation_evo_reveal.zip \
     vendor/infinity/bootanimation/prebuilts/bootanimation_google_monet.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation_google_monet.zip
