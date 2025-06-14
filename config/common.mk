@@ -49,6 +49,10 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+# Enable Material Design 3 Expressive
+PRODUCT_PRODUCT_PROPERTIES += \
+    is_expressive_design_enabled=true
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
