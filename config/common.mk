@@ -151,16 +151,6 @@ PRODUCT_PACKAGES += \
     SimpleDeviceConfig \
     SimpleSettingsConfig
 
-# Extra tools in Lineage
-PRODUCT_PACKAGES += \
-    bash \
-    curl \
-    getcap \
-    htop \
-    nano \
-    setcap \
-    vim
-
 PRODUCT_PACKAGES += \
     nano_recovery
 
@@ -198,10 +188,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
-
-# rsync
-PRODUCT_PACKAGES += \
-    rsync
 
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
