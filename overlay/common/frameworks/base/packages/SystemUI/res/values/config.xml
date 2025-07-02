@@ -74,4 +74,6 @@
 
     <!-- User avatar dialog result broadcast explicit package -->
     <string name="config_avatar_picker_package">com.google.android.avatarpicker</string>
+
+    <bool name="config_turbulenceNoise" translatable="false">false</bool>
 </resources>
