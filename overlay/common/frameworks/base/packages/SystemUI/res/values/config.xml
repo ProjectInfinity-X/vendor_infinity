@@ -51,4 +51,6 @@
 
     <!-- Whether or not lockscreen shortcuts can be customized -->
     <bool name="custom_lockscreen_shortcuts_enabled" translatable="false">true</bool>
+
+    <bool name="config_turbulenceNoise" translatable="false">false</bool>
 </resources>
