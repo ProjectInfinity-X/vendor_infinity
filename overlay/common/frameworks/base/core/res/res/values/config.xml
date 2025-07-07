@@ -183,4 +183,8 @@
 
     <!-- Suppress Intent Filter Verification Service crashes and System UI ANRs (both AOSP bugs) -->
     <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice,com.android.systemui,com.google.android.as,com.google.android.tts</string>
+
+    <bool name="config_enableBurnInProtection">true</bool>
+
+    <dimen name="config_viewConfigurationTouchSlop">6dp</dimen>
 </resources>
