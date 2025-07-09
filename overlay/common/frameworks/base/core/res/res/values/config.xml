@@ -694,6 +694,12 @@
     <!-- Maximum velocity to initiate a fling, as measured in dips per second. -->
      <dimen name="config_viewMaxFlingVelocity">12000dp</dimen>
      
+    <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
+    <string name="config_headlineFontFamily" translatable="false">google-sans</string>
+
+    <!-- Name of the font family used for system surfaces where the font should use medium weight -->
+    <string name="config_headlineFontFamilyMedium" translatable="false">google-sans-medium</string>
+
     <!-- Colon separated list of package names that should be granted Notification Listener access -->
     <string name="config_defaultListenerAccessPackages" translatable="false">com.google.android.apps.nexuslauncher:com.google.android.setupwizard:com.google.android.apps.pixelmigrate:com.google.android.as:com.google.android.projection.gearhead:co.aospa.glyph:io.chaldeaprjkt.gamespace</string>
 
