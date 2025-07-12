@@ -240,6 +240,10 @@ PRODUCT_PACKAGES += \
 # Overlays
 include packages/overlays/Themes/themes.mk
 
+# BTHelper
+PRODUCT_PACKAGES += \
+    BtHelper
+
 # Props
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.debug.alloc=0 \
