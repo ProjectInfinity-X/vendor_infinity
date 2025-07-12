@@ -1,6 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 $(call inherit-product-if-exists, vendor/extras/prebuilts.mk)
+$(call inherit-product, vendor/pixel-style/config/common.mk)
 
 PRODUCT_BRAND ?= Project Infinity X
 
@@ -52,6 +53,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/addon.d/50-lineage.sh
+
+# Google Overlays
+PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
+    PixelLauncherNoGestureHintOverlay \
+    PixelLauncherOverlayCustom 
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
@@ -174,7 +181,6 @@ endif
 
 # Config
 PRODUCT_PACKAGES += \
-    SimpleDeviceConfig \
     SimpleSettingsConfig
 
 PRODUCT_PACKAGES += \
@@ -279,8 +285,10 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Storage manager
-PRODUCT_SYSTEM_PROPERTIES += \
+ifeq ($(WITH_GAPPS),false)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
+endif
 
 # Default wifi country code
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -323,9 +331,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 
 # SetupWizard
+ifeq ($(WITH_GAPPS),false)
 PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.theme=glif_v4 \
     setupwizard.feature.day_night_mode_enabled=true
+endif
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/infinity/overlay/no-rro
 PRODUCT_PACKAGE_OVERLAYS += \
