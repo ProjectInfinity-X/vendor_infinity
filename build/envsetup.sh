@@ -9,12 +9,12 @@ function check_product()
         echo "Couldn't locate the top of the tree. Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^lineage_") ; then
-        LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
+    if (echo -n $1 | grep -q -e "^infinity_") ; then
+        INFINITY_BUILD=$(echo -n $1 | sed -e 's/^infinity_//g')
     else
-        LINEAGE_BUILD=
+        INFINITY_BUILD=
     fi
-    export LINEAGE_BUILD
+    export INFINITY_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_RELEASE=$2 \
@@ -41,7 +41,7 @@ function breakfast()
 {
     target=$1
     local variant=$2
-    source ${ANDROID_BUILD_TOP}/vendor/lineage/vars/aosp_target_release
+    source ${ANDROID_BUILD_TOP}/vendor/infinity/vars/aosp_target_release
 
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
@@ -56,7 +56,7 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch lineage_$target-$aosp_target_release-$variant
+            lunch infinity_$target-$aosp_target_release-$variant
         fi
     fi
     return $?
@@ -67,7 +67,7 @@ alias bib=breakfast
 function eat()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/lineage-*.zip | tail -1`
+        ZIPPATH=`ls -tr "$OUT"/infinity-*.zip | tail -1`
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -75,13 +75,13 @@ function eat()
         echo "Waiting for device..."
         adb wait-for-device-recovery
         echo "Found device"
-        if (adb shell getprop ro.lineage.device | grep -q "$LINEAGE_BUILD"); then
+        if (adb shell getprop ro.infinity.device | grep -q "$INFINITY_BUILD"); then
             echo "Rebooting to sideload for install"
             adb reboot sideload-auto-reboot
             adb wait-for-sideload
             adb sideload $ZIPPATH
         else
-            echo "The connected device does not appear to be $LINEAGE_BUILD, run away!"
+            echo "The connected device does not appear to be $INFINITY_BUILD, run away!"
         fi
         return $?
     else
@@ -366,14 +366,14 @@ function installboot()
     adb wait-for-device-recovery
     adb root
     adb wait-for-device-recovery
-    if (adb shell getprop ro.lineage.device | grep -q "$LINEAGE_BUILD");
+    if (adb shell getprop ro.infinity.device | grep -q "$INFINITY_BUILD");
     then
         adb push $OUT/boot.img /cache/
         adb shell dd if=/cache/boot.img of=$PARTITION
         adb shell rm -rf /cache/boot.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $LINEAGE_BUILD, run away!"
+        echo "The connected device does not appear to be $INFINITY_BUILD, run away!"
     fi
 }
 
@@ -404,14 +404,14 @@ function installrecovery()
     adb wait-for-device-recovery
     adb root
     adb wait-for-device-recovery
-    if (adb shell getprop ro.lineage.device | grep -q "$LINEAGE_BUILD");
+    if (adb shell getprop ro.infinity.device | grep -q "$INFINITY_BUILD");
     then
         adb push $OUT/recovery.img /cache/
         adb shell dd if=/cache/recovery.img of=$PARTITION
         adb shell rm -rf /cache/recovery.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $LINEAGE_BUILD, run away!"
+        echo "The connected device does not appear to be $INFINITY_BUILD, run away!"
     fi
 }
 
@@ -766,7 +766,7 @@ function dopush()
         echo "Device Found."
     fi
 
-    if (adb shell getprop ro.lineage.device | grep -q "$LINEAGE_BUILD") || [ "$FORCE_PUSH" = "true" ];
+    if (adb shell getprop ro.infinity.device | grep -q "$INFINITY_BUILD") || [ "$FORCE_PUSH" = "true" ];
     then
     # retrieve IP and PORT info if we're using a TCP connection
     TCPIPPORT=$(adb devices \
@@ -885,7 +885,7 @@ EOF
     rm -f $OUT/.log
     return 0
     else
-        echo "The connected device does not appear to be $LINEAGE_BUILD, run away!"
+        echo "The connected device does not appear to be $INFINITY_BUILD, run away!"
     fi
 }
 
@@ -898,7 +898,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/lineage/build/tools/repopick.py $@
+    $T/vendor/infinity/build/tools/repopick.py $@
 }
 
 function sort-blobs-list() {
