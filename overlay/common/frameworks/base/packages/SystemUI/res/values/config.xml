@@ -71,4 +71,7 @@
     <!-- Time (in ms) to delay the bouncer views from showing when passive auth may be used for
     device entry. -->
     <integer name="primary_bouncer_passive_auth_delay">0</integer>
+
+    <!-- User avatar dialog result broadcast explicit package -->
+    <string name="config_avatar_picker_package">com.google.android.avatarpicker</string>
 </resources>
