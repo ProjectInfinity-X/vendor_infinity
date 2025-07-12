@@ -1,45 +1,44 @@
-PRODUCT_VERSION_MAJOR = 23
-PRODUCT_VERSION_MINOR = 1
+# Copyright (C) 2024 Project Infinity X
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
+ANDROID_VERSION := 16
+INFINITYVERSION := 3.6
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+INFINITY_BUILD_TYPE ?= UNOFFICIAL
+INFINITY_MAINTAINER ?= UNKNOWN
+INFINITY_DATE_YEAR := $(shell date -u +%Y)
+INFINITY_DATE_MONTH := $(shell date -u +%m)
+INFINITY_DATE_DAY := $(shell date -u +%d)
+INFINITY_DATE_HOUR := $(shell date -u +%H)
+INFINITY_DATE_MINUTE := $(shell date -u +%M)
+INFINITY_BUILD_DATE := $(INFINITY_DATE_YEAR)$(INFINITY_DATE_MONTH)$(INFINITY_DATE_DAY)-$(INFINITY_DATE_HOUR)$(INFINITY_DATE_MINUTE)
+TARGET_PRODUCT_SHORT := $(subst infinity_,,$(INFINITY_BUILD))
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
-    endif
-endif
+INFINITY_VERSION := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD)-$(INFINITY_BUILD_DATE)
+INFINITY_DISPLAY_VERSION := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD_TYPE)
+INFINITY_DISPLAY_BUILDTYPE := $(INFINITY_BUILD_TYPE)
+INFINITY_FINGERPRINT := Project_Infinity/$(INFINITY_MOD_VERSION)/$(TARGET_PRODUCT_SHORT)/$(INFINITY_BUILD_DATE)
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
-endif
-
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# LineageOS version properties
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE)
+# INFINITY System Version
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.infinity.android.version=$(ANDROID_VERSION) \
+  ro.infinity.build.version=$(INFINITY_VERSION) \
+  ro.infinity.build.status=$(INFINITY_BUILD_TYPE) \
+  ro.modversion=$(INFINITY_VERSION) \
+  ro.infinity.build.date=$(INFINITY_BUILD_DATE) \
+  ro.infinity.buildtype=$(INFINITY_BUILD_TYPE) \
+  ro.infinity.fingerprint=$(INFINITY_FINGERPRINT) \
+  ro.infinity.device=$(INFINITY_BUILD) \
+  ro.infinity.version=$(INFINITYVERSION) \
+  ro.infinity.maintainer=$(INFINITY_MAINTAINER)
