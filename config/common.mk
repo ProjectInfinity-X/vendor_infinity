@@ -347,7 +347,8 @@ PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
     NetworkStackOverlay \
     NfcOverlay \
-    PermissionControllerOverlay
+    PermissionControllerOverlay \
+    CustomFontPixelLauncherOverlay
 
 AXION_CPU_SMALL_CORES ?= 0,1,2,3
 AXION_CPU_BIG_CORES ?= 4,5,6,7
