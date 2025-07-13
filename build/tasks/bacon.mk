@@ -15,11 +15,6 @@
 
 # -----------------------------------------------------------------
 # Infinity OTA update package
-
-ZIP_NAME := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD)-$(INFINITY_BUILD_DATE)-VANILLA-$(INFINITY_BUILD_TYPE)
-ifeq ($(WITH_GAPPS), true)
-ZIP_NAME := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD)-$(INFINITY_BUILD_DATE)-GAPPS-$(INFINITY_BUILD_TYPE)
-endif
 INFINITY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ZIP_NAME).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
