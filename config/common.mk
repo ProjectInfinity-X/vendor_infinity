@@ -5,6 +5,8 @@ $(call inherit-product, vendor/pixel-style/config/common.mk)
 
 PRODUCT_BRAND ?= Project Infinity X
 
+WITH_GAPPS := true
+
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase=android-google
