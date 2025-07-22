@@ -177,6 +177,9 @@ ifeq ($(TARGET_BUILD_DEVICE_AS_WEBCAM), true)
         ro.usb.uvc.enabled=true
 endif
 
+# Broken config
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+
 # Config
 PRODUCT_PACKAGES += \
     SimpleSettingsConfig
