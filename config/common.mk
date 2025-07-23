@@ -286,10 +286,8 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Storage manager
-ifeq ($(WITH_GAPPS),false)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
-endif
 
 # Default wifi country code
 PRODUCT_SYSTEM_PROPERTIES += \
