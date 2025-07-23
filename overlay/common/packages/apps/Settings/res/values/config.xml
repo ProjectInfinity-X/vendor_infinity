@@ -40,7 +40,4 @@
 
     <!-- User avatar dialog result broadcast explicit package -->
     <string name="config_avatar_picker_package" translatable="false">com.google.android.avatarpicker</string>
-    
-    <!-- Whether to display Cloned Apps page in Settings (Settings > Apps > Cloned Apps).-->
-    <bool name="config_cloned_apps_page_enabled">true</bool>
 </resources>
