@@ -5,8 +5,6 @@ $(call inherit-product, vendor/pixel-style/config/common.mk)
 
 PRODUCT_BRAND ?= Project Infinity X
 
-WITH_GAPPS := true
-
 # Allow vendor prebuilt repos to exclude themselves from bp scanning
 -include $(sort $(wildcard vendor/*/*/exclude-bp.mk))
 
@@ -187,6 +185,12 @@ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 PRODUCT_PACKAGES += \
     SimpleSettingsConfig
 
+# Calculator
+ifneq ($(WITH_GAPPS),true)
+PRODUCT_PACKAGES += \
+    ExactCalculator
+endif
+
 PRODUCT_PACKAGES += \
     nano_recovery
 
@@ -223,11 +227,13 @@ PRODUCT_COPY_FILES += \
  PRODUCT_PRODUCT_PROPERTIES += \
      debug.graphics.game_default_frame_rate.disabled=true
 
-# Gapps // Must not omit gapps, the build is not yet ready for vanilla
+# Gapps
+ifeq ($(WITH_GAPPS),true)
 include vendor/gms/gms_pico.mk
 
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
+endif
 
 # Openssh
 PRODUCT_PACKAGES += \
@@ -253,6 +259,10 @@ include packages/overlays/Themes/themes.mk
 # BTHelper
 PRODUCT_PACKAGES += \
     BtHelper
+
+# OmniJaws
+PRODUCT_PACKAGES += \
+    OmniJaws
 
 # Props
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -325,6 +335,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStep \
     Settings \
     CarSystemUI \
     SystemUI
