@@ -4,6 +4,7 @@ $(call inherit-product-if-exists, vendor/extras/prebuilts.mk)
 $(call inherit-product, vendor/pixel-style/config/common.mk)
 
 PRODUCT_BRAND ?= Project Infinity X
+WITH_GAPPS ?= true
 
 # Allow vendor prebuilt repos to exclude themselves from bp scanning
 -include $(sort $(wildcard vendor/*/*/exclude-bp.mk))
