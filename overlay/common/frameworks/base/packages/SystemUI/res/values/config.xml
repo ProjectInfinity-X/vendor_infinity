@@ -72,8 +72,5 @@
     device entry. -->
     <integer name="primary_bouncer_passive_auth_delay">0</integer>
 
-    <!-- User avatar dialog result broadcast explicit package -->
-    <string name="config_avatar_picker_package">com.google.android.avatarpicker</string>
-
     <bool name="config_turbulenceNoise" translatable="false">false</bool>
 </resources>

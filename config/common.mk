@@ -44,6 +44,10 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+# AvatarPicker
+PRODUCT_PACKAGES += \
+    AvatarPicker
+
 # Enable Material Design 3 Expressive
 PRODUCT_PRODUCT_PROPERTIES += \
     is_expressive_design_enabled=true
