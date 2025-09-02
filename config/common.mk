@@ -271,9 +271,10 @@ include packages/overlays/Themes/themes.mk
 PRODUCT_PACKAGES += \
     BtHelper
 
-# OmniJaws
+# OmniPackages
 PRODUCT_PACKAGES += \
-    OmniJaws
+    OmniJaws \
+    OmniStyle
 
 # Props
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
