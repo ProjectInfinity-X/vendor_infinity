@@ -309,6 +309,8 @@ PRODUCT_PACKAGES += \
     OmniStyle
 
 # Root
+ifneq ($(TARGET_BUILD_VARIANT),user)
+ifeq ($(WITH_SU),true)
 PRODUCT_PACKAGES += \
     adb_root
 
@@ -317,6 +319,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/xbin/su
+endif
+endif
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= $(TARGET_SUPPORTS_64_BIT_APPS)
