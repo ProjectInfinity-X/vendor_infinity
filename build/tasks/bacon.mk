@@ -22,15 +22,31 @@ SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 $(INFINITY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv -f $(INTERNAL_OTA_PACKAGE_TARGET) $(INFINITY_TARGET_PACKAGE)
 	$(hide) ./vendor/infinity/build/tools/generate_ota_info.sh $(INFINITY_TARGET_PACKAGE)
-	echo -e ${CL_BLD}${CL_RED}"===============================-Compiling complete-==============================="${CL_RED}
-	echo -e ${CL_BLD}${CL_GRN}"Get your Compiled ROM Package from: "${CL_RED} $(INFINITY_TARGET_PACKAGE)${CL_RST}
-	echo ""
-	echo -e ${CL_BLD}${CL_GRN}"Get your Compiled ROM Package's ota json from: "${CL_RED} $(INFINITY_TARGET_PACKAGE).json${CL_RST}
-	echo ""
-	echo ""
-	echo -e ${CL_BLD}${CL_RED}"                    Thanks for trying out Project Infinity X ❤️"${CL_RED}
-	echo ""
-	echo -e ${CL_BLD}${CL_RED}"================================================================================"${CL_RED}
+	@echo -e "" >&2
+	@echo -e "\033[1;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;34m    ██╗███╗   ██╗███████╗██╗███╗   ██╗██╗████████╗██╗   ██╗    ██╗  ██╗\033[0m" >&2
+	@echo -e "\033[1;34m    ██║████╗  ██║██╔════╝██║████╗  ██║██║╚══██╔══╝╚██╗ ██╔╝    ╚██╗██╔╝\033[0m" >&2
+	@echo -e "\033[1;34m    ██║██╔██╗ ██║█████╗  ██║██╔██╗ ██║██║   ██║    ╚████╔╝      ╚███╔╝\033[0m" >&2
+	@echo -e "\033[1;34m    ██║██║╚██╗██║██╔══╝  ██║██║╚██╗██║██║   ██║     ╚██╔╝       ██╔██╗\033[0m" >&2
+	@echo -e "\033[1;34m    ██║██║ ╚████║██║     ██║██║ ╚████║██║   ██║      ██║       ██╔╝ ██╗\033[0m" >&2
+	@echo -e "\033[1;34m    ╚═╝╚═╝  ╚═══╝╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝      ╚═╝       ╚═╝  ╚═╝\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;34m                      ✨ BUILD COMPILED SUCCESSFULLY ✨\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;37m  ▸ Package:\033[0m    \033[1;37m$(notdir $(INFINITY_TARGET_PACKAGE))\033[0m" >&2
+	@echo -e "\033[1;37m  ▸ Device:\033[0m     \033[1;37m$$(grep -m1 'ro.infinity.device=' $(PRODUCT_OUT)/system/build.prop 2>/dev/null | cut -d'=' -f2)\033[0m" >&2
+	@echo -e "\033[1;37m  ▸ Variant:\033[0m    \033[1;37m$(TARGET_BUILD_VARIANT)\033[0m" >&2
+	@echo -e "\033[1;37m  ▸ Size:\033[0m       \033[1;37m$(shell du -h $(INFINITY_TARGET_PACKAGE) | cut -f1)\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" >&2
+	@echo -e "" >&2
+	@echo -e "" >&2
+	@echo -e "\033[1;37m              Thanks for compiling Project Infinity X ❤️\033[0m" >&2
+	@echo -e "\033[1;34m             ────────────────────────────────────────────\033[0m" >&2
+	@echo -e "" >&2
 
 .PHONY: bacon
 bacon: $(INFINITY_TARGET_PACKAGE) $(DEFAULT_GOAL)
