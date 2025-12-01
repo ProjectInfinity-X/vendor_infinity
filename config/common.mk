@@ -45,6 +45,12 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+# Animation override
+PERF_ANIM_OVERRIDE ?= false
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.activity_anim_perf_override=$(PERF_ANIM_OVERRIDE)
+
 # Bypass charging
 BYPASS_CHARGE_SUPPORTED ?= false
 PRODUCT_SYSTEM_PROPERTIES += \
