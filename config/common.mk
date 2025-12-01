@@ -49,6 +49,12 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+# Animation override
+PERF_ANIM_OVERRIDE ?= false
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.activity_anim_perf_override?=$(PERF_ANIM_OVERRIDE)
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/infinity/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
