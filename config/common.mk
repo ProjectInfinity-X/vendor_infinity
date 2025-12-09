@@ -280,8 +280,10 @@ $(call inherit-product, vendor/pixel/gms/products/gms.mk)
 $(call inherit-product, vendor/pixel/themepicker/products/themepicker.mk)
 $(call inherit-product, vendor/pixel/sounds/products/sounds.mk)
 
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
+endif
 endif
 
 # Openssh
