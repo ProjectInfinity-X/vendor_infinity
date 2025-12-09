@@ -263,8 +263,10 @@ PRODUCT_COPY_FILES += \
 ifeq ($(WITH_GAPPS),true)
 include vendor/google/gms/config.mk
 
+ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 PRODUCT_PACKAGES += \
     UpdaterGMSOverlay
+endif
 endif
 
 # Openssh
