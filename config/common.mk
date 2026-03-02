@@ -380,7 +380,8 @@ PRODUCT_PACKAGES += \
     LineageFrameworksOverlay \
     NetworkStackOverlay \
     NfcOverlay \
-    PermissionControllerOverlay
+    PermissionControllerOverlay \
+    SBHeightOverlay
 
 # Translations
 CUSTOM_LOCALES += \
