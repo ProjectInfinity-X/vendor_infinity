@@ -397,6 +397,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
+    AppLocker \
+    GameSpace \
     Settings \
     CarSystemUI \
     SystemUI
