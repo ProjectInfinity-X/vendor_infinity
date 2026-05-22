@@ -55,9 +55,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
     
 # Animation override
 PERF_ANIM_OVERRIDE ?= false
-
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.sys.activity_anim_perf_override=$(PERF_ANIM_OVERRIDE)
+    persist.sys.activity_anim_perf_override?=$(PERF_ANIM_OVERRIDE)
 
 # Bypass charging
 BYPASS_CHARGE_SUPPORTED ?= false
