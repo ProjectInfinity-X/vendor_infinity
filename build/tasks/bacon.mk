@@ -14,16 +14,28 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# Lineage OTA update package
+# Infinity OTA update package
 
-LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/lineage-$(LINEAGE_VERSION).zip
+ZIP_NAME := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD)-$(INFINITY_BUILD_DATE)-VANILLA-$(INFINITY_BUILD_TYPE)
+ifeq ($(WITH_GAPPS), true)
+ZIP_NAME := Project_Infinity-X-$(INFINITYVERSION)-$(INFINITY_BUILD)-$(INFINITY_BUILD_DATE)-GAPPS-$(INFINITY_BUILD_TYPE)
+endif
+INFINITY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ZIP_NAME).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
-$(LINEAGE_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
-	$(hide) $(SHA256) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).sha256sum
-	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
+$(INFINITY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
+	$(hide) mv -f $(INTERNAL_OTA_PACKAGE_TARGET) $(INFINITY_TARGET_PACKAGE)
+	$(hide) ./vendor/infinity/build/tools/generate_ota_info.sh $(INFINITY_TARGET_PACKAGE)
+	echo -e ${CL_BLD}${CL_RED}"===============================-Compiling complete-==============================="${CL_RED}
+	echo -e ${CL_BLD}${CL_GRN}"Get your Compiled ROM Package from: "${CL_RED} $(INFINITY_TARGET_PACKAGE)${CL_RST}
+	echo ""
+	echo -e ${CL_BLD}${CL_GRN}"Get your Compiled ROM Package's ota json from: "${CL_RED} $(INFINITY_TARGET_PACKAGE).json${CL_RST}
+	echo ""
+	echo ""
+	echo -e ${CL_BLD}${CL_RED}"                    Thanks for trying out Project Infinity X ❤️"${CL_RED}
+	echo ""
+	echo -e ${CL_BLD}${CL_RED}"================================================================================"${CL_RED}
 
 .PHONY: bacon
-bacon: $(LINEAGE_TARGET_PACKAGE) $(DEFAULT_GOAL)
+bacon: $(INFINITY_TARGET_PACKAGE) $(DEFAULT_GOAL)
