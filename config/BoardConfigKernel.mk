@@ -61,7 +61,7 @@
 #   USE_CCACHE                         = Enable ccache (global Android flag)
 #   USE_RBE                            = Enable RBE (global Android flag)
 
-include vendor/lineage/build/core/utils.mk
+include vendor/infinity/build/core/utils.mk
 
 BUILD_TOP := $(abspath .)
 
