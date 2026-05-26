@@ -47,7 +47,7 @@
 #   USE_CCACHE                         = Enable ccache (global Android flag)
 #   USE_RBE                            = Enable RBE (global Android flag)
 
-include vendor/lineage/build/core/utils.mk
+include vendor/infinity/build/core/utils.mk
 
 BUILD_TOP := $(abspath .)
 
@@ -115,7 +115,7 @@ endif
 
 # ccache can't cache anything behind another wrapper, so it gives way to RBE
 ifneq ($(KERNEL_RBE_WRAPPER),)
-    KERNEL_CC_WRAPPER := $(BUILD_TOP)/vendor/lineage/build/tools/kernel_rbe_cc.sh
+    KERNEL_CC_WRAPPER := $(BUILD_TOP)/vendor/infinity/build/tools/kernel_rbe_cc.sh
 else
     KERNEL_CC_WRAPPER := $(CCACHE_BIN)
 endif
