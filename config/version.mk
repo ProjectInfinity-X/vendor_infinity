@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ANDROID_VERSION := 16
-INFINITYVERSION := 3.7
+ANDROID_VERSION := 17
+INFINITYVERSION := 4.0-BETA
 
 INFINITY_BUILD_TYPE ?= UNOFFICIAL
 INFINITY_MAINTAINER ?= UNKNOWN

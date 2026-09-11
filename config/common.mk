@@ -114,10 +114,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# Columbus
-PRODUCT_PACKAGES += \
-    ColumbusService
-
 # Component overrides
 PRODUCT_PACKAGES += \
     lineage-component-overrides.xml
@@ -211,9 +207,7 @@ PRODUCT_PACKAGES += \
 
 # Extra packages
 PRODUCT_PACKAGES += \
-    AxQuickLook \
-    AxSandbox \
-    AxThemeStore
+    AxSandbox
 
 # Extra tools in Lineage
 PRODUCT_PACKAGES += \
@@ -266,7 +260,7 @@ PRODUCT_COPY_FILES += \
 
 # Gapps
 ifeq ($(WITH_GAPPS),true)
-include vendor/google/gms/config.mk
+include vendor/gapps/arm64/arm64-vendor.mk
 
 ifeq ($(INFINITY_BUILD_TYPE),OFFICIAL)
 PRODUCT_PACKAGES += \
