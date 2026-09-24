@@ -49,7 +49,7 @@
 #   USE_CCACHE                         = Enable ccache (global Android flag)
 #   USE_RBE                            = Enable RBE (global Android flag)
 
-include vendor/lineage/build/core/utils.mk
+include vendor/infinity/build/core/utils.mk
 
 BUILD_TOP := $(abspath .)
 
@@ -93,7 +93,7 @@ TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TA
 # for Rust-enabled kernels rather than maintaining a toolchain denylist.
 ifeq ($(TARGET_KERNEL_LIBCLANG_PATH),)
     ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/rust/bindings/bindings_helper.h),)
-        TARGET_KERNEL_LIBCLANG_PATH := $(shell $(BUILD_TOP)/vendor/lineage/build/tools/select_kernel_libclang.sh \
+        TARGET_KERNEL_LIBCLANG_PATH := $(shell $(BUILD_TOP)/vendor/infinity/build/tools/select_kernel_libclang.sh \
             $(BUILD_TOP)/prebuilts/clang-tools/$(HOST_PREBUILT_TAG)/bin/bindgen \
             $(TARGET_KERNEL_CLANG_PATH) \
             $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG))
@@ -130,7 +130,7 @@ endif
 
 # ccache can't cache anything behind another wrapper, so it gives way to RBE
 ifneq ($(KERNEL_RBE_WRAPPER),)
-    KERNEL_CC_WRAPPER := $(BUILD_TOP)/vendor/lineage/build/tools/kernel_rbe_cc.sh
+    KERNEL_CC_WRAPPER := $(BUILD_TOP)/vendor/infinity/build/tools/kernel_rbe_cc.sh
 else
     KERNEL_CC_WRAPPER := $(CCACHE_BIN)
 endif

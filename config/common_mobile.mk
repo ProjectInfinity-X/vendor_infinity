@@ -1,12 +1,12 @@
 # Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+$(call inherit-product, vendor/infinity/config/common.mk)
 
 # Include AOSP audio files
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
-include vendor/lineage/config/aosp_audio.mk
+include vendor/infinity/config/aosp_audio.mk
 
 # Include Lineage audio files
-include vendor/lineage/config/lineage_audio.mk
+include vendor/infinity/config/lineage_audio.mk
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -16,44 +16,12 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Apps
 PRODUCT_PACKAGES += \
     AvatarPicker \
-    Backgrounds \
     Glimpse \
     LatinIME
-
-ifeq ($(PRODUCT_TYPE), go)
-PRODUCT_PACKAGES += \
-    Launcher3QuickStepGo
-
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    Launcher3QuickStepGo
-else
-PRODUCT_PACKAGES += \
-    Launcher3QuickStep
-
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    Launcher3QuickStep
-endif
-
-PRODUCT_PACKAGES += \
-    Launcher3Overlay
-
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
-ifneq ($(WITH_LINEAGE_CHARGER),false)
-PRODUCT_PACKAGES += \
-    lineage_charger_animation \
-    lineage_charger_animation_vendor
-endif
 
 # Credential storage
 PRODUCT_PACKAGES += \
     android.software.credentials.prebuilt.xml
-
-# Legal
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lineagelegal.url=https://lineageos.org/legal
 
 # Media
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -78,6 +46,5 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 
 # Themes
 PRODUCT_PACKAGES += \
-    LineageBlackTheme \
     ThemePicker \
     ThemesStub
