@@ -359,14 +359,14 @@ def main():
             matchObj = re.match(r"Local Branches.*\[(.*)\]", pline)
             if matchObj:
                 local_branches = re.split(r"\s*,\s*", matchObj.group(1))
-                if any(args.start_branch[0] in s for s in local_branches):
+                if args.start_branch[0] in local_branches:
                     needs_abandon = True
 
         if needs_abandon:
             # Perform the abandon only if the branch already exists
             if not args.quiet:
                 print("Abandoning branch: %s" % args.start_branch[0])
-            subprocess.run(["repo", "abandon", args.start_branch[0]])
+            subprocess.run(["repo", "abandon", args.start_branch[0]], check=True)
             if not args.quiet:
                 print("")
 
@@ -551,7 +551,7 @@ def main():
     for project_path in mergables:
         # If --start-branch is given, create the branch (more than once per path is okay; repo ignores gracefully)
         if args.start_branch:
-            subprocess.run(["repo", "start", args.start_branch[0], project_path])
+            subprocess.run(["repo", "start", args.start_branch[0], project_path], check=True)
 
         # Determine the maximum commits to check already picked changes
         check_picked_count = args.check_picked
@@ -569,8 +569,7 @@ def main():
                 text=True,
             )
         )
-        if branch_commits_count <= check_picked_count:
-            check_picked_count = branch_commits_count - 1
+        check_picked_count = min(check_picked_count, branch_commits_count)
 
         picked_change_ids = []
         for i in range(check_picked_count):
@@ -603,10 +602,13 @@ def main():
     # round 2: fetch changes in parallel if not pull
     if not args.pull:
         with ThreadPoolExecutor(max_workers=args.jobs) as e:
+            futures = []
             for per_path_mergables in mergables.values():
                 # changes are sorted so loop in reversed order to fetch top commits first
                 for item in reversed(per_path_mergables):
-                    e.submit(partial(do_git_fetch_pull, args), item)
+                    futures.append(e.submit(partial(do_git_fetch_pull, args), item))
+            for future in futures:
+                future.result()
 
     # round 3: apply changes in parallel for different projects, but sequential
     # within each project
@@ -616,8 +618,9 @@ def main():
             for item in per_path_mergables:
                 apply_change(args, item)
 
-        for per_path_mergables in mergables.values():
-            e.submit(bulk_pick_change, per_path_mergables)
+        futures = [e.submit(bulk_pick_change, items) for items in mergables.values()]
+        for future in futures:
+            future.result()
 
 
 def do_git_fetch_pull(args, item):
@@ -650,7 +653,7 @@ def do_git_fetch_pull(args, item):
             print(cmd)
         result = subprocess.call(cmd, cwd=project_path)
         # Check if it worked
-        if result == 0 or commit_exists(project_path, item["revision"]):
+        if result == 0 or (not args.pull and commit_exists(project_path, item["revision"])):
             return
         print("ERROR: git command failed")
 
@@ -667,7 +670,7 @@ def do_git_fetch_pull(args, item):
     if not args.quiet:
         print(cmd)
     result = subprocess.call(cmd, cwd=project_path)
-    if result != 0 and not commit_exists(project_path, item["revision"]):
+    if result != 0 and (args.pull or not commit_exists(project_path, item["revision"])):
         print("ERROR: git command failed")
         sys.exit(result)
 

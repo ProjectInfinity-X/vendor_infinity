@@ -1,18 +1,14 @@
-#!/usr/bin/env python
-
-from __future__ import print_function
+#!/usr/bin/env python3
 
 import base64
 import sys
 
-pkFile = open(sys.argv[1], 'rb').readlines()
-base64Key = ""
-inCert = False
-for line in pkFile:
-    if line.startswith(b"-"):
-        inCert = not inCert
-        continue
+def main():
+    with open(sys.argv[1], 'rb') as cert_file:
+        certificate = cert_file.read().split(b"-----BEGIN CERTIFICATE-----", 1)[1]
+    certificate = certificate.split(b"-----END CERTIFICATE-----", 1)[0]
+    print(base64.b64decode(certificate).hex())
 
-    base64Key += line.strip()
 
-print(base64.b16encode(base64.b64decode(base64Key)).lower())
+if __name__ == "__main__":
+    main()

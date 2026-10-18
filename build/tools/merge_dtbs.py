@@ -29,11 +29,12 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import copy
+import hashlib
 import os
 import sys
 import subprocess
 import shutil
-from itertools import product, combinations_with_replacement, chain
+from itertools import product, chain
 import logging
 import argparse
 
@@ -120,28 +121,25 @@ class DeviceTreeInfo(object):
 		s.extra_ids.update({extra_id: other.extra_ids.get(extra_id) for extra_id in s.extra_ids if new_extra_ids.get(extra_id)})
 		res.add(s)
 
-		# now create the other possibilities by removing any combination of
-		# other's plat, board, and/or pmic. Set logic (unique elemnts) handles
-		# duplicate devicetrees IDs spit out by this loop
-		for combo in combinations_with_replacement([True, False], 3 + len(self.extra_ids)):
-			if not any((c and n) for (c, n) in zip(combo, (new_plat, new_board, new_pmic) + tuple(new_extra_ids))):
+		# Partition each changed dimension into the intersection and its
+		# complement, preserving every supported device exactly once.
+		changed = (new_plat, new_board, new_pmic) + tuple(new_extra_ids.values())
+		for combo in product(*[(True, False) if n else (False,) for n in changed]):
+			if not any(combo):
 				continue
 			s = copy.deepcopy(self)
-			if combo[0] and new_plat:
-				s.plat_id -= other.plat_id
-			if combo[1] and new_board:
-				s.board_id -= other.board_id
-			if combo[2] and new_pmic:
-				s.pmic_id -= other.pmic_id
+			for i, prop in enumerate(('plat_id', 'board_id', 'pmic_id')):
+				if changed[i]:
+					setattr(s, prop, getattr(self, prop) - getattr(other, prop) if combo[i] else getattr(other, prop))
 			for i, extra_id in enumerate(new_extra_ids):
-				if combo[3 + i] and new_extra_ids[extra_id]:
-					s.extra_ids[extra_id] -= other.extra_ids.get(extra_id)
+				if new_extra_ids[extra_id]:
+					s.extra_ids[extra_id] = self.extra_ids[extra_id] - other.extra_ids[extra_id] if combo[3 + i] else other.extra_ids[extra_id]
 			res.add(s)
 		return res
 
 	def __hash__(self):
 		# Hash should only consider msm-id/board-id/pmic-id/extra ids
-		return hash((self.plat_id, self.board_id, self.pmic_id) + tuple(self.extra_ids.values()))
+		return hash((self.plat_id, self.board_id, self.pmic_id, tuple(sorted(self.extra_ids.items()))))
 
 	def __and__(self, other):
 		s = copy.deepcopy(self)
@@ -157,29 +155,15 @@ class DeviceTreeInfo(object):
 				s.extra_ids[extra_id] = self.extra_ids.get(extra_id) & other.extra_ids.get(extra_id)
 		return s
 
-	@staticmethod
-	def _do_equivalent(self_prop, other_prop):
-		if other_prop is None:
-			return True
-		return self_prop == other_prop
-
 	def __eq__(self, other):
-		"""
-		Checks whether other plat_id, board_id, pmic_id matches either identically
-		or because the property is none
-		"""
+		"""Compare identifiers exactly so equality is consistent with hashing."""
 		if not isinstance(other, DeviceTreeInfo):
-			return False
-		if not other.has_any_properties():
 			return False
 		return (
 			all(
-				DeviceTreeInfo._do_equivalent(getattr(self, p), getattr(other, p))
+				getattr(self, p) == getattr(other, p)
 				for p in ['plat_id', 'board_id', 'pmic_id']
-			) and all(
-				DeviceTreeInfo._do_equivalent(self.extra_ids.get(extra_id), other.extra_ids.get(extra_id))
-				for extra_id in self.extra_ids
-			)
+			) and self.extra_ids == other.extra_ids
 		)
 
 	@staticmethod
@@ -301,9 +285,9 @@ class DeviceTree(DeviceTreeInfo):
 
 		out_array = None
 		if prop_type[-1] == 'i' or prop_type[-1] == 'u':
-			out_array = [int(e) for e in out.split(' ')]
+			out_array = [int(e) for e in out.split()]
 		if prop_type[-1] == 'x':
-			out_array = [int(e, 16) for e in out.split(' ')]
+			out_array = [int(e, 16) for e in out.split()]
 		if out_array is not None:
 			if len(out_array) == 0:
 				return None
@@ -394,7 +378,15 @@ class InnerMergedDeviceTree(DeviceTreeInfo):
 	def get_name(self):
 		ext = os.path.splitext(os.path.basename(self.base))[1]
 		base_parts = self.filename_to_parts(self.base)
-		name_hash = hex(hash((self.plat_id, self.board_id, self.pmic_id)))
+		def canonical(value):
+			if value is None or isinstance(value, tuple):
+				return value
+			return tuple(sorted(value))
+		identifiers = (
+			canonical(self.plat_id), canonical(self.board_id), canonical(self.pmic_id),
+			tuple((key, canonical(value)) for key, value in sorted(self.extra_ids.items())),
+		)
+		name_hash = hashlib.sha256(repr(identifiers).encode('utf-8')).hexdigest()[:16]
 		name = '-'.join(chain.from_iterable([base_parts] + [self.filename_to_parts(tp.filename, ignored_parts=base_parts) for tp in self.techpacks]))
 		final_name = '-'.join([name, name_hash]) + ext
 		return final_name

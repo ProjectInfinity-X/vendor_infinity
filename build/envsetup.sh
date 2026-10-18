@@ -4,7 +4,7 @@ export LLVM_AOSP_PREBUILTS_VERSION="${CLANG_VERSION}"
 function mk_timer()
 {
     local start_time=$(date +"%s")
-    $@
+    "$@"
     local ret=$?
     local end_time=$(date +"%s")
     local tdiff=$(($end_time-$start_time))
@@ -72,21 +72,22 @@ alias bib=breakfast
 function eat()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/infinity-*.zip | tail -1`
-        if [ ! -f $ZIPPATH ] ; then
+        local ZIPPATH=$(ls -tr "$OUT"/Project_Infinity-X-*.zip 2>/dev/null | tail -1)
+        if [ ! -f "$ZIPPATH" ] ; then
             echo "Nothing to eat"
             return 1
         fi
         echo "Waiting for device..."
-        adb wait-for-device-recovery
+        adb wait-for-device-recovery || return $?
         echo "Found device"
-        if (adb shell getprop ro.infinity.device | grep -q "$INFINITY_BUILD"); then
+        if [ -n "$INFINITY_BUILD" ] && [ "$(adb shell getprop ro.infinity.device | tr -d '\r')" = "$INFINITY_BUILD" ]; then
             echo "Rebooting to sideload for install"
-            adb reboot sideload-auto-reboot
-            adb wait-for-sideload
-            adb sideload $ZIPPATH
+            adb reboot sideload-auto-reboot || return $?
+            adb wait-for-sideload || return $?
+            adb sideload "$ZIPPATH"
         else
             echo "The connected device does not appear to be $INFINITY_BUILD, run away!"
+            return 1
         fi
         return $?
     else
@@ -97,8 +98,7 @@ function eat()
 
 function omnom()
 {
-    brunch $*
-    eat
+    brunch "$@" && eat
 }
 
 function cout()
@@ -244,7 +244,7 @@ function infinityremote()
     then
         git remote add infinity ssh://review.infinity.org:29418/$PFX$PROJECT
     else
-        git remote add infinity ssh://$infinity_USER@review.infinity.org:29418/$PFX$PROJECT
+        git remote add infinity ssh://$INFINITY_USER@review.infinity.org:29418/$PFX$PROJECT
     fi
     echo "Remote 'infinity' created"
 }

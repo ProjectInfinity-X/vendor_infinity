@@ -20,9 +20,9 @@ INFINITY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(INFINITY_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
-$(INFINITY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) mv -f $(INTERNAL_OTA_PACKAGE_TARGET) $(INFINITY_TARGET_PACKAGE)
-	$(hide) ./vendor/infinity/build/tools/generate_ota_info.sh $(INFINITY_TARGET_PACKAGE)
+$(INFINITY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET) vendor/infinity/build/tools/generate_ota_info.sh vendor/infinity/build/tools/generate_ota_info.py
+	$(hide) cp -f $(INTERNAL_OTA_PACKAGE_TARGET) $(INFINITY_TARGET_PACKAGE)
+	$(hide) ./vendor/infinity/build/tools/generate_ota_info.sh "$(INFINITY_TARGET_PACKAGE)" "$(PRODUCT_OUT)/system/build.prop"
 	echo -e ${CL_BLD}${CL_RED}"===============================-Compiling complete-==============================="${CL_RED}
 	echo -e ${CL_BLD}${CL_GRN}"Get your Compiled ROM Package from: "${CL_RED} $(INFINITY_TARGET_PACKAGE)${CL_RST}
 	echo ""

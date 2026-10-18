@@ -22,6 +22,7 @@ import json
 import netrc
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -55,7 +56,7 @@ try:
 
     if authtuple:
         auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
-        githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
+        githubauth = base64.b64encode(auth_string).decode()
     else:
         githubauth = None
 except:
@@ -79,11 +80,12 @@ if not depsonly:
         repositories.append(res.attrib['name'][10:])
 
 local_manifests = r'.repo/local_manifests'
-if not os.path.exists(local_manifests): os.makedirs(local_manifests)
+if not dryrun:
+    os.makedirs(local_manifests, exist_ok=True)
 
 def exists_in_tree(lm, path):
-    for child in lm.getchildren():
-        if child.attrib['path'] == path:
+    for child in lm:
+        if child.get('path') == path:
             return True
     return False
 
@@ -131,7 +133,7 @@ def get_from_manifest(devicename):
             lm = ElementTree.Element("manifest")
 
         for localpath in lm.findall("project"):
-            if re.search("android_device_.*_%s$" % device, localpath.get("name")):
+            if re.search("android_device_.*_%s$" % re.escape(devicename), localpath.get("name", "")):
                 return localpath.get("path")
 
     return None
@@ -215,7 +217,13 @@ def add_to_manifest(repositories):
     f.write(raw_xml)
     f.close()
 
-def fetch_dependencies(repo_path):
+def fetch_dependencies(repo_path, visited=None):
+    if visited is None:
+        visited = set()
+    normalized_path = os.path.realpath(repo_path)
+    if normalized_path in visited:
+        return
+    visited.add(normalized_path)
     print('Looking for dependencies in %s' % repo_path)
     dependencies_path = repo_path + '/lineage.dependencies'
     syncable_repos = []
@@ -251,10 +259,10 @@ def fetch_dependencies(repo_path):
     if len(syncable_repos) > 0:
         print('Syncing dependencies')
         if not dryrun:
-            os.system('repo sync --force-sync %s' % ' '.join(syncable_repos))
+            subprocess.run(['repo', 'sync', '--force-sync'] + syncable_repos, check=True)
 
     for deprepo in verify_repos:
-        fetch_dependencies(deprepo)
+        fetch_dependencies(deprepo, visited)
 
 def has_branch(branches, revision):
     return revision in [branch['name'] for branch in branches]
@@ -287,7 +295,7 @@ def get_default_or_fallback_revision(repo_name):
     for branch in [branch['name'] for branch in result]:
         print(branch)
     print("Use the ROOMSERVICE_BRANCHES environment variable to specify a list of fallback branches.")
-    sys.exit()
+    sys.exit(1)
 
 if depsonly:
     repo_path = get_from_manifest(device)
@@ -311,7 +319,8 @@ else:
             add_to_manifest([device_repository])
 
             print("Syncing repository to retrieve project.")
-            os.system('repo sync --force-sync %s' % repo_path)
+            if not dryrun:
+                subprocess.run(['repo', 'sync', '--force-sync', repo_path], check=True)
             print("Repository synced!")
 
             fetch_dependencies(repo_path)
