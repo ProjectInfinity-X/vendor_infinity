@@ -14,8 +14,5 @@
 # limitations under the License.
 #
 
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/infinity/prebuilts
-
 PRODUCT_COPY_FILES += \
     vendor/infinity/bootanimation/prebuilts/bootanimation_google_monet.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation_google_monet.zip

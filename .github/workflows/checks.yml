@@ -1,0 +1,26 @@
+name: Build tooling checks
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Run host regression tests
+        run: python3 -m unittest discover -s build/tools/tests -v
+      - name: Check shell syntax
+        run: |
+          while IFS= read -r -d '' script; do
+            bash -n "$script" || exit
+          done < <(git ls-files -z '*.sh' '*.bash' '*.functions')
+      - uses: ./.github/workflows/build

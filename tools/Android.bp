@@ -2,3 +2,8 @@ filegroup {
     name: "apns-conf-schema",
     srcs: ["apns-conf.xsd"],
 }
+
+filegroup {
+    name: "spn-schema",
+    srcs: ["SpnInfo.xsd"],
+}
